@@ -12,6 +12,8 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/wtf", (req, res) => res.send("hello world"))
+
   app.get("/api/authors/:id", function(req, res) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
