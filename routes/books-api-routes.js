@@ -7,7 +7,7 @@
 
 // Requiring our models
 var db = require("../models");
-console.log("THIS IS DB ", db)
+// console.log("THIS IS DB ", db)
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -49,11 +49,24 @@ module.exports = function(app) {
   app.post("/api/posts", function(req, res) {
     console.log("REQ.BODY!!!", req.body);
     
-    db.library.create(req.body).then(function(dbPost) {
+    db.book.create(req.body).then(function(dbPost) {
     
       res.json(dbPost);
     }).catch(err=> console.log(err))
   });
+
+  app.post("/api/books", function(req, res) {
+    console.log("REQ.BODY!!!", req.body);
+    
+    db.books.create(req.body).then(function(dbPost) {
+    
+      res.json(dbPost);
+    }).catch(err=> console.log(err))
+  });
+
+
+
+
 
   // DELETE route for deleting posts
   app.delete("/api/posts/:id", function(req, res) {
