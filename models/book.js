@@ -15,37 +15,29 @@ module.exports = function(sequelize, DataTypes) {
         },
         availability: {
             type: DataTypes.BOOLEAN
-        },
-        library_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     });
 
-    // Book.associate = function(models) {
-    //     // We're saying that a Post should belong to an Author
-    //     // A Post can't be created without an Author due to the foreign key constraint 
-    //     Book.belongsTo(models.library, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
+    Book.associate = function(models) {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint 
+        Book.belongsTo(models.library, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
 
-    //     Book.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
+        Book.belongsTo(models.user, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
 
-    //     Book.hasMany(models.review, {
-    //         onDelete: "cascade"
-    //     });
+        Book.hasMany(models.review, {
+            onDelete: "cascade"
+        });
 
-    // };
+    };
 
     return Book;
 };
