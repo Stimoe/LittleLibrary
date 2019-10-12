@@ -11,27 +11,27 @@ module.exports = function(sequelize, DataTypes) {
         },
         image: {
             type: DataTypes.TEXT
-        },
-        user: {
-            type: DataTypes.INTEGER
         }
     });
 
-    // library.associate = function(models) {
-    //     library.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
+    Library.associate = function(models) {
+        Library.belongsTo(models.user, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
 
-    //     // library.hasMany(models.Book, {
-    //     //     onDelete: "cascade"
-    //     // });
+        Library.hasMany(models.book, {
+            onDelete: "cascade"
+        });
+
+        Library.hasMany(models.bookRequest, {
+            onDelete: "cascade"
+        });
 
 
 
-
-    // };
+    };
 
     return Library;
 };

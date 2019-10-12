@@ -11,34 +11,26 @@ module.exports = function(sequelize, DataTypes) {
         },
         rating: {
             type: DataTypes.INTEGER
-        },
-        user: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        book: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
 
     });
 
-    // review.associate = function(models) {
-    //     // Associating Author with Posts
-    //     // When an Author is deleted, also delete any associated Posts
-    //     review.belongsTo(models.Book, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    //     // Associating Author with Posts
-    //     // When an Author is deleted, also delete any associated Posts
-    //     review.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Review.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Review.belongsTo(models.book, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Review.belongsTo(models.user, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
     return Review;
 
 
