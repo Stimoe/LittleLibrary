@@ -49,11 +49,24 @@ module.exports = function(app) {
     app.post("/api/posts", function(req, res) {
         console.log("REQ.BODY!!!", req.body);
 
-        db.library.create(req.body).then(function(dbPost) {
+        db.book.create(req.body).then(function(dbPost) {
 
             res.json(dbPost);
         }).catch(err => console.log(err))
     });
+
+    app.post("/api/books", function(req, res) {
+        console.log("REQ.BODY!!!", req.body);
+
+        db.books.create(req.body).then(function(dbPost) {
+
+            res.json(dbPost);
+        }).catch(err => console.log(err))
+    });
+
+
+
+
 
     // DELETE route for deleting posts
     app.delete("/api/posts/:id", function(req, res) {
@@ -64,17 +77,28 @@ module.exports = function(app) {
         }).then(function(dbPost) {
             res.json(dbPost);
         });
-    });
 
-    // PUT route for updating posts
-    app.put("/api/posts", function(req, res) {
-        db.Post.update(
-            req.body, {
+        // DELETE route for deleting posts
+        app.delete("/api/posts/:id", function(req, res) {
+            db.Library.destroy({
                 where: {
-                    id: req.body.id
+                    id: req.params.id
                 }
             }).then(function(dbPost) {
-            res.json(dbPost);
+                res.json(dbPost);
+            });
+        });
+
+        // PUT route for updating posts
+        app.put("/api/posts", function(req, res) {
+            db.Post.update(
+                req.body, {
+                    where: {
+                        id: req.body.id
+                    }
+                }).then(function(dbPost) {
+                res.json(dbPost);
+            });
         });
     });
 };

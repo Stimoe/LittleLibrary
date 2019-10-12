@@ -9,7 +9,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.FLOAT(100, 8),
             allowNull: false
         },
+
+        location: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         image: {
+            type: DataTypes.TEXT
+        },
+        description: {
             type: DataTypes.TEXT
         }
     });
