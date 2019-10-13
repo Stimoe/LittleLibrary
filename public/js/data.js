@@ -1,12 +1,71 @@
 $(document).ready(function() {
-    var users = {
-        name: "amjad",
-        username: "amjad",
-        password: "000"
-    };
 
 
+    // the data that will send to DB
+    var users = [{
+            name: "Amjed",
+            username: "amjad",
+            password: "000"
+        },
+        {
+            name: "Dan",
+            username: "dan",
+            password: "000"
+        },
+        {
+            name: "Thomas",
+            username: "thomas",
+            password: "000"
+        }
+    ];
 
+
+    var books = [{
+            title: "book1",
+            author: "author1",
+            genre: "genre1",
+            image: "img",
+            availability: true,
+            libraryId: 1,
+            userId: 1
+        },
+        {
+            title: "book2",
+            author: "author2",
+            genre: "genre2",
+            image: "img",
+            availability: true,
+            libraryId: 2,
+            userId: 2
+        },
+        {
+            title: "book3",
+            author: "author2",
+            genre: "genre2",
+            image: "img",
+            availability: true,
+            libraryId: 2,
+            userId: 2
+        },
+        {
+            title: "book4",
+            author: "author3",
+            genre: "genre3",
+            image: "img",
+            availability: true,
+            libraryId: 3,
+            userId: 3
+        },
+        {
+            title: "book5",
+            author: "author1",
+            genre: "genre3",
+            image: "img",
+            availability: true,
+            libraryId: 4,
+            userId: 1
+        }
+    ];
 
 
     var libraries = [{
@@ -22,21 +81,21 @@ $(document).ready(function() {
             location: "508 2nd AVE Seattle WA 98104",
             image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00Pd000000IiuQEEAZ",
             description: "Little Free Library is a program I became excited about following some press coverage years ago. Until recently I did not have a suitable location for the library, however we decided our neighborhood pub would be a perfect fit. With people coming and going all day, and many families looking to entertain their children, Little Free Library has a great, humble home in our Irish pub's lobby.",
-            userId: 1
+            userId: 2
         }, {
             longitude: -122.3236821,
             lattitude: 47.6041348,
             location: "325 9th Avenue Seattle WA 98104",
             image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00P0W00000kCJzpUAG",
             description: " ",
-            userId: 1
+            userId: 3
         }, {
             longitude: -122.34272,
             lattitude: 47.61149,
             location: "2008 First Ave Seattle WA 98121",
             image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00Pd000000IiuQvEAJ",
             description: "Essentia's Seattle store is on the edge of the Belltown neighborhood in Seattle. At first glance it's part shopping district and part salons and night clubs. Take one look up and you'll see the other side of Belltown, the residences - condos and apartments - that fill this unique neighborhood. We're always looking for ways to connect with our city and give back. The Seattle store's employees also happen to read a lot of books. Adding a Little Free Library seemed a natural fit.",
-            userId: 1
+            userId: 2
         }, {
             longitude: -122.3117329,
             lattitude: 47.6084887,
@@ -48,32 +107,101 @@ $(document).ready(function() {
 
     ]
 
+    var reviews = [{
+            body: "I love this book",
+            title: "book1",
+            rating: 4,
+            bookId: 1,
+            userId: 1
+        },
+        {
+            body: "I love this book",
+            title: "book2",
+            rating: 3,
+            bookId: 2,
+            userId: 2
+        },
+        {
+            body: "I love this book",
+            title: "book3",
+            rating: 3,
+            bookId: 3,
+            userId: 3
+        },
+        {
+            body: "I love this book",
+            title: "book4",
+            rating: 3,
+            bookId: 4,
+            userId: 3
+        }
+    ];
+
+    var bookrequests = [{
+        text: "hi I need this book",
+        libraryId: 1,
+        userId: 1
+    }];
 
 
+
+
+    // the function that add data to the db
     $(document).on("click", ".addlib", addlib);
-
-
-    function insertlib(authorData) {
-        $.post("/api/libraries", authorData)
-            .then(
-                function() {
-                    console.log("created new library");
-                }
-            );
-    }
-
 
     function addlib() {
         alert("hi")
-        $.post("/api/users", users)
-            .then(
-                function() {
-                    console.log("created new user");
-                }
-            );
-        for (let i = 0; i < libraries.length; i++) {
-            insertlib(libraries[i]);
+            //adding users
+        for (let j = 0; j < users.length; j++) {
+            $.post("/api/users", users[j])
+                .then(
+                    function() {
+                        console.log("created new user");
+                    }
+                );
+
         }
+        //adding libraries
+        for (let i = 0; i < libraries.length; i++) {
+            $.post("/api/libraries", libraries[i])
+                .then(
+                    function() {
+                        console.log("created new library");
+                    }
+                );
+
+        }
+        //adding books
+        for (let k = 0; k < books.length; k++) {
+            $.post("/api/books", books[k])
+                .then(
+                    function() {
+                        console.log("created new books");
+                    }
+                );
+
+        }
+        //adding reviews
+        for (let z = 0; z < reviews.length; z++) {
+            $.post("/api/reviews", reviews[z])
+                .then(
+                    function() {
+                        console.log("created new reviews");
+                    }
+                );
+
+        }
+        //adding bookRequests
+        for (let r = 0; r < bookrequests.length; r++) {
+            $.post("/api/bookRequests", bookrequests[r])
+                .then(
+                    function() {
+                        console.log("created new bookrequests");
+                    }
+                );
+
+        }
+
     }
 
 
