@@ -25,6 +25,30 @@ module.exports = function(app) {
             res.json(dbbooks);
         });
     });
+    //find books based on title
+    app.get("/api/booksTitle/:title", function(req, res) {
+        db.book.findOne({
+            where: {
+                title: req.params.title,
+                availability: true
+            }
+            // include: [db.Post]
+        }).then(function(dbbooks) {
+            res.json(dbbooks);
+        });
+    });
+    //find books based on genre
+    app.get("/api/booksGenre/:genre", function(req, res) {
+        db.book.findOne({
+            where: {
+                genre: req.params.genre,
+                availability: true
+            }
+            // include: [db.Post]
+        }).then(function(dbbooks) {
+            res.json(dbbooks);
+        });
+    });
 
     app.post("/api/books", function(req, res) {
         db.book.create(req.body).then(function(dbbooks) {

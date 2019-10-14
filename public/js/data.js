@@ -61,7 +61,7 @@ $(document).ready(function() {
             author: "author1",
             genre: "genre3",
             image: "img",
-            availability: true,
+            availability: false,
             libraryId: 4,
             userId: 1
         }
@@ -147,11 +147,10 @@ $(document).ready(function() {
 
 
     // the function that add data to the db
-    $(document).on("click", ".addlib", addlib);
+    // $(document).on("click", ".addlib", addlib);
 
     function addlib() {
-        alert("hi")
-            //adding users
+        //adding users
         for (let j = 0; j < users.length; j++) {
             $.post("/api/users", users[j])
                 .then(
@@ -204,6 +203,6 @@ $(document).ready(function() {
 
     }
 
-
+    addlib();
 
 });
