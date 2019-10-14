@@ -28,9 +28,8 @@ module.exports = function(app) {
     app.get("/index", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
-    app.get("/maps", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/searchPage.html"));
+    app.get("/user", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/user.html"));
     });
-
 
 };

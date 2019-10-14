@@ -6,13 +6,13 @@ USE littleLibrary_db;
 
 
 
-INSERT INTO User (name,email,username,password) VALUES("Bob","Bob@gmail.com","Bob1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Joe","joe@gmail.com","Joe1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Emily","Emily@gmail.com","Emily1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Forest","Forest@gmail.com","Forest1", "password");
-INSERT INTO User (name,email,username,password) VALUES("John","John@gmail.com","John1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Dave","Dave@gmail.com","Dave1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Bobby","Bobby@gmail.com","Bobby1", "password");
+INSERT INTO User (email,password,name,zipcode) VALUES("Bob@gmail.com", "password","Bob",98105);
+INSERT INTO User (email,password,name,zipcode) VALUES("joe@gmail.com", "password","Joe",98105);
+INSERT INTO User (email,password,name,zipcode) VALUES("Emily@gmail.com", "password","Emily",98103);
+INSERT INTO User (email,password,name,zipcode) VALUES("Forest@gmail.com", "password","Forest",98103);
+INSERT INTO User (email,password,name,zipcode) VALUES("John@gmail.com", "password","John",98115);
+INSERT INTO User (email,password,name,zipcode) VALUES("Dave@gmail.com", "password","Dave",98115);
+INSERT INTO User (email,password,name,zipcode) VALUES("Bobby@gmail.com", "password","Bobby",98133);
 
 
 INSERT INTO Review (body,title,rating,user,book) VALUES("The body of the review","Book was bad",2,"Bob1","Tale of two cities")
