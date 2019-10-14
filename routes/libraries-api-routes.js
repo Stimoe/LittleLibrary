@@ -7,7 +7,7 @@ module.exports = function(app) {
         // In this case, just db.Post
         db.library.findAll({
             // include: [db.Post]
-        }).then(function() {
+        }).then(function(dblibraries) {
             res.json(dblibraries);
         });
     });
