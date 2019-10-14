@@ -6,13 +6,13 @@ USE littleLibrary_db;
 
 
 
-INSERT INTO User (name,email,username,password) VALUES("Bob","Bob@gmail.com","Bob1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Joe","joe@gmail.com","Joe1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Emily","Emily@gmail.com","Emily1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Forest","Forest@gmail.com","Forest1", "password");
-INSERT INTO User (name,email,username,password) VALUES("John","John@gmail.com","John1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Dave","Dave@gmail.com","Dave1", "password");
-INSERT INTO User (name,email,username,password) VALUES("Bobby","Bobby@gmail.com","Bobby1", "password");
+INSERT INTO User (email,password,name,zipcode) VALUES("Bob@gmail.com", "password","Bob",98105);
+INSERT INTO User (email,password,name,zipcode) VALUES("joe@gmail.com", "password","Joe",98105);
+INSERT INTO User (email,password,name,zipcode) VALUES("Emily@gmail.com", "password","Emily",98103);
+INSERT INTO User (email,password,name,zipcode) VALUES("Forest@gmail.com", "password","Forest",98103);
+INSERT INTO User (email,password,name,zipcode) VALUES("John@gmail.com", "password","John",98115);
+INSERT INTO User (email,password,name,zipcode) VALUES("Dave@gmail.com", "password","Dave",98115);
+INSERT INTO User (email,password,name,zipcode) VALUES("Bobby@gmail.com", "password","Bobby",98133);
 
 
 INSERT INTO Review (body,title,rating,user,book) VALUES("The body of the review","Book was bad",2,"Bob1","Tale of two cities")
@@ -25,62 +25,62 @@ INSERT INTO Review (body,title,rating,user,book) VALUES("Book was ok","Book was 
 INSERT INTO Review (body,title,rating,user,book) VALUES("It was too long","Book was very long",2,"John1","Hard choices")
 
 {
-title: "Tale of two cities",
-author: "Charles Dickens",
-genre:  "Classics",
-availability: true,
-library_id: 2,
-user_id: 4
+"title": "Tale of two cities",
+"author": "Charles Dickens",
+"genre":  "Classics",
+"availability": true,
+"library_id": 2,
+"user_id": 4
 },
 {
-title: "Romeo and Juliet",
-author: "Shakespear",
-genre:  "Classics",
-availability: true,
-library_id: 1,
-user_id: 3 
+"title": "Romeo and Juliet",
+"author": "Shakespear",
+"genre":  "Classics",
+"availability": true,
+"library_id": 1,
+"user_id": 3 
 },
 {
-title: "Name of the Wind",
-author: "Patrick Rothfuss",
-genre:  "Fantasy",
-availability: false,
-library_id: 1,
-user_id: 3  
+"title": "Name of the Wind",
+"author": "Patrick Rothfuss",
+"genre":  "Fantasy",
+"availability": false,
+"library_id": 1,
+"user_id": 3  
 },
 {
-title: "Crooked Kingdom",
-author:  "Leigh Bardugo",
-genre:  "Fantasy",
-availability: true,
-library_id: 1,
-user_id: 5     
+"title": "Crooked Kingdom",
+"author":  "Leigh Bardugo",
+"genre":  "Fantasy",
+"availability": true,
+"library_id": 1,
+"user_id": 5     
 },
 {
-title: "Oathbreaker",
-author:  "Brandon Sanderson",
-genre:  "Fantasy",
-availability: false,
-library_id: 3,
-user_id: 2     
+"title": "Oathbreaker",
+"author":  "Brandon Sanderson",
+"genre":  "Fantasy",
+"availability": false,
+"library_id": 3,
+"user_id": 2     
 },
 {
-title: "Something Under my bed is drooling",
-author:  "Bill Watterson",
-genre:  "Comics",
-availability: true,
-library_id: 4,
-user_id: 3    
+"title": "Something Under my bed is drooling",
+"author":  "Bill Watterson",
+"genre":  "Comics",
+"availability": true,
+"library_id": 4,
+"user_id": 3    
 },
-title: "Ghost of Gondwana",
-author:  "George Gibbs",
-genre:  "Nature",
-availability: false,
-library_id: 3,
-user_id: 4     
+"title": "Ghost of Gondwana",
+"author":  "George Gibbs",
+"genre":  "Nature",
+"availability": false,
+"library_id": 3,
+"user_id": 4     
 }
 
-INSERT INTO Book (title,author,genre,availability,library_id,user_id) VALUES("Crooked Kingdom", "Leigh Bardugo", "Fantasy",true,1,5);
+INSERT INTO Book (title,author,genre,availability,library_id,"user_id") VALUES("Crooked Kingdom", "Leigh Bardugo", "Fantasy",true,1,5);
 INSERT INTO Book (title,author,genre,availability,library_id,user_id) VALUES("Oathbreaker", "Brandon Sanderson", "Fantasy",false,3,2);
 INSERT INTO Book (title,author,genre,availability,library_id,user_id) VALUES("Something Under my bed is drooling", "Bill Watterson", "Comics"true,4,3);
 INSERT INTO Book (title,author,genre,availability,library_id,user_id) VALUES("Ghost of Gondwana", "George Gibbs", "Nature",false,3,4);

@@ -29,13 +29,13 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/html-routes.js")(app);
 require("./routes/libraries-api-routes.js")(app);
 require("./routes/books-api-routes.js")(app);
 require("./routes/bookRequests-api-routes.js")(app);
-// require("./routes/maps-api-routes.js")(app);
+require("./routes/maps-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/reviews-api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

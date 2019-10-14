@@ -1,48 +1,20 @@
 
-var libraries = [{
-  longitude: -122.33872,
-  lattitude: 47.68631
-},
-{
-  longitude: -122.34197,
-  lattitude: 47.68424
-},
-{
-  longitude: -122.35141,
-  lattitude: 47.6857
-},
-{
-  longitude: -122.351411,
-  lattitude: 47.6857
+var db = require("../models");
+
+module.exports = function(app) {
+
+    // app.get("/api/librarymap", function(req, res) {
+    //     // Here we add an "include" property to our options in our findOne query
+    //     // We set the value to an array of the models we want to include in a left outer join
+    //     // In this case, just db.Post
+    //     db.library.findAll({
+           
+    //         // include: [db.Post]
+    //     }).then(function(dbmaps) {
+    //         res.json(dbmaps);
+    //     });
+    // });
+    
+ 
+
 }
-
-]
-
-
-
-console.log(libraries);
-
-function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-  
-        lat = position.coords.latitude,
-          lng = position.coords.longitude
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: new google.maps.LatLng(lat, lng),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        startLat = lat
-        startLong = lng
-        latLon = (startLat + "," + startLong)
-        // bandInfo(latLon)
-        console.log(latLon)
-        
-      })
-  
-    }
-  
-  }
-
-  getLocation()
