@@ -163,7 +163,7 @@ $(document).ready(function() {
   // the function that add data to the db
   // $(document).on("click", ".addlib", addlib);
 
-  function addlib() {
+  function addAll() {
     //adding users
     for (let j = 0; j < users.length; j++) {
       $.post("/api/users", users[j]).then(function() {
@@ -196,5 +196,5 @@ $(document).ready(function() {
     }
   }
 
-  addlib();
+  addAll();
 });

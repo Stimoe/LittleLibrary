@@ -24,12 +24,9 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/library.html"));
     });
 
-    // blog route loads index.html
-    app.get("/index", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    });
+    
     app.get("/user", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/user.html"));
+        res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
 };
