@@ -7,9 +7,13 @@ $(document).ready(function() {
             //search by title
             $.get("/api/booksTitle/" + input, function(data) {
                 if (data !== null) {
-                    var reslut = $("<h3>");
-                    reslut.text(data.title + "\n" + data.author + "\n" + data.genre + "\n" + data.image + "\n" + data.availability + "\n");
-                    $(".results").append(reslut);
+                    for (let i = 0; i < data.length; i++) {
+                        
+                        var result = $("<h3>");
+                        result.text(data[i].title + "\n" + data[i].author + "\n" + data[i].genre + "\n" + data[i].image + "\n" + data[i].availability+ "\n" + data[i].libraryId + "\n");
+                        $(".results").append(result);
+                        
+                    }
                 }
             });
             //search by genre
@@ -28,3 +32,4 @@ $(document).ready(function() {
 
 
 });
+
