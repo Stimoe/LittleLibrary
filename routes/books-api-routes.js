@@ -27,7 +27,7 @@ module.exports = function(app) {
     });
     //find books based on title
     app.get("/api/booksTitle/:title", function(req, res) {
-        db.book.findOne({
+        db.book.findAll({
             where: {
                 title: req.params.title,
                 availability: true
@@ -39,7 +39,7 @@ module.exports = function(app) {
     });
     //find books based on genre
     app.get("/api/booksGenre/:genre", function(req, res) {
-        db.book.findOne({
+        db.book.findAll({
             where: {
                 genre: req.params.genre,
                 availability: true
