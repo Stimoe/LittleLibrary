@@ -63,3 +63,12 @@ form.example::after {
 .libBtn {
     font-size: 16pt;
 }
+
+.libBook {
+    cursor: pointer;
+}
+
+
+/* #bookModal {
+    z-index: 1;
+} */
