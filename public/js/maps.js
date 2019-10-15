@@ -36,59 +36,146 @@
 //     }
 
 // ]
-var libraries = [];
+// var libraries = [];
+
+// $(document).ready(function() {
+//     $.get("/api/libraries", function(data) {
+//         for (var i = 0; i < data.length; i++) {
+//             //   console.log(data[i]);
+//             libraries.push(data[i]);
+//         }
+//         console.log("this is me logging libraries", libraries);
+//         getLocation(libraries)
+//     });
+
+// })
+
+
+
+// function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(function(position) {
+//             console.log(libraries);
+
+//             lat = position.coords.latitude,
+//                 lng = position.coords.longitude
+//             console.log("my location", lat, lng);
+
+//             var map = new google.maps.Map(document.getElementById('map'), {
+//                 zoom: 13,
+//                 center: new google.maps.LatLng(lat, lng),
+//                 mapTypeId: google.maps.MapTypeId.ROADMAP
+//             });
+//             console.log("inside locations function", libraries);
+
+//             for (let i = 0; i < libraries.length; i++) {
+
+//                 lat2 = libraries[i].lattitude
+//                 long2 = libraries[i].longitude
+//                 location = libraries[i].location
+//                 markerToMake = {
+//                     lat: lat2,
+//                     lng: long2
+//                 }
+//                 var marker = new google.maps.Marker({
+//                     position: markerToMake,
+//                     map: map,
+//                     title: location
+//                 });
+//             }
+//         })
+//     }
+// }
 
 $(document).ready(function() {
-    $.get("/api/libraries", function(data) {
-    for (var i = 0; i < data.length; i++) {
-    //   console.log(data[i]);
-      libraries.push(data[i]);
-    }
-    console.log("this is me logging libraries",libraries);
-    getLocation(libraries)
-  });
-  
-})
+    //library page
+    $(document).on("click", ".searchBtn", function() {
 
-
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(libraries);
-            
-            lat = position.coords.latitude,
-                lng = position.coords.longitude
-            console.log("my location", lat, lng);
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
-                center: new google.maps.LatLng(lat, lng),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            console.log("inside locations function",libraries);
-            
-            for (let i = 0; i < libraries.length; i++) {
-
-                lat2 = libraries[i].lattitude
-                long2 = libraries[i].longitude
-                location=libraries[i].location
-                markerToMake = {
-                    lat: lat2,
-                    lng: long2
+        var input = $("#searchBox").val().trim();
+        if (input !== "") {
+            //search by title
+            $.get("/api/booksTitle/" + input, function(data) {
+                if (data !== null) {
+                    var reslut = $("<h3>");
+                    reslut.text(data.title + "\n" + data.author + "\n" + data.genre + "\n" + data.image + "\n" + data.availability + "\n");
+                    $(".results").append(reslut);
                 }
-                var marker = new google.maps.Marker({
-                    position: markerToMake,
-                    map: map,
-                    title: location
-                });
+            });
+            //search by genre
+            $.get("/api/booksGenre/" + input, function(data) {
+                if (data !== null) {
+                    for (let i = 0; i < data.length; i++) {
+                        var reslut = $("<h3>");
+                        reslut.text(data[i].title + "\n" + data[i].author + "\n" + data[i].genre + "\n" + data[i].image + "\n" + data[i].availability + "\n");
+                        $(".results").append(reslut);
+                    }
+
+                }
+            });
+        }
+    });
+
+    // Library page #########################################################################
+
+    $(document).on("click", "#addBook", function() {
+        var bookId;
+        var book = {
+            title: $("#title").val().trim(),
+            author: $("#author").val().trim(),
+            genre: $("#genre").val().trim() || null,
+            image: $("#image").val().trim() || null,
+            availability: true,
+            libraryId: 1,
+            userId: 1
+        };
+
+        $.post("/api/books", book).then(function(data) {
+            console.log("created new books");
+            bookId = data.id;
+            var review = {
+                body: $("#review").val().trim(),
+                title: $("#title").val().trim(),
+                rating: $("#rating").val(),
+                bookId: bookId,
+                userId: 1
             }
-        })
+            $.post("/api/reviews", review).then(function() {
+                console.log("created new reviews");
+            });
+
+        });
+        $("#title").val("")
+        $("#author").val("")
+        $("#genre").val("")
+        $("#image").val("")
+        $("#review").val("")
+        $("#rating").val("")
+
+    });
+
+    $(document).on("click", ".addlib", function() {
+
+        showLibrary(1);
+    });
+
+    $(document).on("click", ".book", function() {
+
+    });
+
+    function showLibrary(id) {
+        $.get("/api/libraries/" + id, function(data) {
+            if (data !== null) {
+                console.log(data.location, data.image)
+                var location = $("<h2>");
+                var img = $("<img>");
+                location.text(data.location);
+                img.attr("src", data.image)
+                img.addClass("libImage");
+                $("#libraryInfo").empty();
+                $("#libraryInfo").append(location, img);
+            }
+
+        });
     }
-}
 
-
-
-
-
-
+});

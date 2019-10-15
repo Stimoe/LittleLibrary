@@ -50,3 +50,16 @@ form.example::after {
     color: cornsilk;
     border: 2px solid rgb(145, 219, 33);
 }
+
+.libImage {
+    width: 250px;
+    height: 250px;
+}
+
+.conteiner-fluid {
+    text-align: center;
+}
+
+.libBtn {
+    font-size: 16pt;
+}
