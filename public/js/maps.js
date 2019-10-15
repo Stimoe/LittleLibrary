@@ -1,6 +1,7 @@
 var marker;
 var markers = [];
 var libraryId;
+var libarr=[];
 $(document).ready(function() {
     var libraryLocations = [];
 
@@ -8,7 +9,7 @@ $(document).ready(function() {
         console.log("first for loop", data);
 
         for (let i = 0; i < data.length; i++) {
-            console.log("this is logging the whole libraries in for loop", data);
+            // console.log("this is logging the whole libraries in for loop", data);
             libraryLocations.push(data[i])
 
 
@@ -59,6 +60,11 @@ $(document).ready(function() {
                         console.log(this.title);
                         libraryId = this.title
                         console.log("library ID outside for loop", libraryId);
+                        libarr=[];
+                        libarr.push(libraryId);
+                        console.log("checking if here ",libarr[0]);
+                        
+                        showLibrary(libarr[0]) 
                         loadPage()
                     });
                 };
@@ -73,10 +79,15 @@ $(document).ready(function() {
         if (input !== "") {
             //search by title
             $.get("/api/booksTitle/" + input, function(data) {
-                if (data !== null) {
-                    var reslut = $("<h3>");
-                    reslut.text(data.title + "\n" + data.author + "\n" + data.genre + "\n" + data.image + "\n" + data.availability + "\n");
-                    $(".results").append(reslut);
+                if (data !== null) 
+                {
+                    for (let j = 0; j < data.length; j++) {
+                        
+                        
+                        var result = $("<h3>");
+                        result.text(data[j].title + "\n" + data[j].author + "\n" + data[j].genre + "\n" + data[j].image + "\n" + data[j].availability + "\n" + data[j].libraryId);
+                        $(".results").append(result);
+                    } 
                 }
             });
             //search by genre
@@ -131,7 +142,7 @@ $(document).ready(function() {
 
     $(document).on("click", ".addlib", function() {
 
-        showLibrary(1);
+        // showLibrary(1);
     });
 
     $(document).on("click", ".book", function() {
@@ -139,6 +150,8 @@ $(document).ready(function() {
     });
 
     function showLibrary(id) {
+        console.log("library id in showlibrary ",id);
+        
         $.get("/api/libraries/" + id, function(data) {
             if (data !== null) {
                 console.log(data.location, data.image)
@@ -156,9 +169,9 @@ $(document).ready(function() {
 
 
 
+    showLibrary(libarr[0])
 })
 
-
 function loadPage() {
-    window.location = "library.html";
+    window.location = "/library";
 }
