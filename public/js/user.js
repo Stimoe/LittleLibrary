@@ -12,7 +12,7 @@
           };
           $.post("/login",loginUser)
             .then(function(data) {
-              console.log("login user", data);
+              // console.log("login user", data);
                 window.location.href = '/search'
             //   res.json(loginUser);
               //How do we redirect to user landing page?
