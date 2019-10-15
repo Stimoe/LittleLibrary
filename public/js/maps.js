@@ -106,7 +106,7 @@ libraryLocations.push(data[j].libraryId)
             $.get("/api/booksGenre/" + input, function (data) {
                 if (data !== null) {
                     for (let k = 0; k < data.length; k++) {
-                        libraryLocations.push(data[j].libraryId)
+                        libraryLocations.push(data[k].libraryId)
                         var result = $("<h3>");
                         result.addClass("booksResults");
                         result.attr("data-bookid", data[k].id);
@@ -202,15 +202,13 @@ libraryLocations.push(data[j].libraryId)
                     rating.text(data.rating);
 
 
-
                     $("#clickedBook").empty();
                     $("#clickedBook").addClass("booksResults");
                     $("#clickedBook").append(title,author,genre,rating,body,libraryId)
-        $("#clickedBookInfo").modal("show");
-            })
 
-                
-    })
+                })     
+            })
+            $("#clickedBookInfo").modal("show");
             
     });
 
