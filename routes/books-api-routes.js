@@ -2,9 +2,6 @@ var db = require("../models");
 
 module.exports = function(app) {
     app.get("/api/books", function(req, res) {
-        // Here we add an "include" property to our options in our findAll query
-        // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.Post
         db.book.findAll({
             // include: [db.Post]
         }).then(function() {
@@ -13,9 +10,6 @@ module.exports = function(app) {
     });
 
     app.get("/api/books/:id", function(req, res) {
-        // Here we add an "include" property to our options in our findOne query
-        // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.Post
         db.book.findOne({
             where: {
                 id: req.params.id
@@ -50,11 +44,48 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/booksLibrary/:libraryId", function(req, res) {
+        db.book.findAll({
+            where: {
+                libraryId: req.params.libraryId,
+                availability: true
+            }
+            // include: [db.Post]
+        }).then(function(dbbooks) {
+            res.json(dbbooks);
+        });
+    });
+
+    app.get("/api/booksUser/:userId", function(req, res) {
+        db.book.findAll({
+            where: {
+                userId: req.params.userId,
+                availability: false
+            }
+            // include: [db.Post]
+        }).then(function(dbbooks) {
+            res.json(dbbooks);
+        });
+    });
+
     app.post("/api/books", function(req, res) {
         db.book.create(req.body).then(function(dbbooks) {
             res.json(dbbooks);
         });
     });
+
+
+    app.put("/api/books", function(req, res) {
+        db.book.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbbook) {
+            res.json(dbbook);
+        });
+    });
+
 
     app.delete("/api/books/:id", function(req, res) {
         db.book.destroy({
