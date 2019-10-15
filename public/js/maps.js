@@ -94,7 +94,7 @@ $(document).ready(function() {
     });
 
     $(document).on("click", "#addBook", function() {
-        var bookId;
+
         var book = {
             title: $("#title").val().trim(),
             author: $("#author").val().trim(),
@@ -107,27 +107,32 @@ $(document).ready(function() {
 
         $.post("/api/books", book).then(function(data) {
             console.log("created new books");
-            bookId = data.id;
-
+            addReview(data.id)
         });
+    });
+
+    function addReview(bookID) {
         var review = {
             body: $("#review").val().trim(),
             title: $("#title").val().trim(),
             rating: $("#rating").val(),
-            bookId: bookId,
+            bookId: bookID,
             userId: 1
         }
         $.post("/api/reviews", review).then(function() {
             console.log("created new reviews");
         });
-        $("#title").val("")
-        $("#author").val("")
-        $("#genre").val("")
-        $("#image").val("")
-        $("#review").val("")
-        $("#rating").val("")
+        $("#title").val("");
+        $("#author").val("");
+        $("#genre").val("");
+        $("#image").val("");
+        $("#review").val("");
+        $("#rating").val("");
+        $("#bookModal").modal("hide");
+    }
 
-    });
+
+
 
     $(document).on("click", ".addlib", function() {
 
@@ -135,7 +140,26 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".book", function() {
+        var lid = 2;
+        $.get("/api/booksLibrary/" + lid, function(data) {
+            if (data !== null) {
+                $("#libBooks").empty();
+                for (let i = 0; i < data.length; i++) {
+                    var book = $("<h3>");
+                    book.text(data[i].title);
+                    book.addClass("libBook");
+                    book.attr("data-id", data[i].id);
+                    var btn = $("<button>");
+                    btn.addClass("libBookBtn");
+                    btn.attr("data-bookId", data[i].id);
+                    btn.text("Borrow")
+                    $("#libBooks").append(book, btn);
 
+                }
+
+                $("#showBookModal").modal("toggle");
+            }
+        });
     });
 
     function showLibrary(id) {
@@ -154,7 +178,100 @@ $(document).ready(function() {
         });
     }
 
+    $(document).on("click", ".libBook", function() {
+        alert($(this).attr("data-id"));
+    });
 
+    $(document).on("click", ".return", function() {
+
+        var userid = 2;
+        $.get("/api/booksUser/" + userid, function(data) {
+            if (data !== null) {
+                $("#userBooks").empty();
+                for (let i = 0; i < data.length; i++) {
+                    var book = $("<h3>");
+                    book.text(data[i].title);
+                    book.addClass("userBook");
+                    book.attr("data-id", data[i].id);
+                    var btn = $("<button>");
+                    btn.addClass("userBookBtn");
+                    btn.attr("data-bookId", data[i].id);
+                    btn.text("Return")
+                    $("#userBooks").append(book, btn);
+
+                }
+
+                $("#returnBookModal").modal("toggle");
+            }
+        });
+
+    });
+
+    $(document).on("click", ".update", function() {
+        var lid = 2;
+        $.get("/api/booksLibrary/" + lid, function(data) {
+            if (data !== null) {
+                $("#updateBooks").empty();
+                for (let i = 0; i < data.length; i++) {
+                    var book = $("<h3>");
+                    book.text(data[i].title);
+                    book.addClass("libBook");
+                    book.attr("data-id", data[i].id);
+                    var btn = $("<button>");
+                    btn.addClass("delBookBtn");
+                    btn.attr("data-bookId", data[i].id);
+                    btn.text("Delete")
+                    $("#updateBooks").append(book, btn);
+
+                }
+
+                $("#updateModal").modal("toggle");
+            }
+        });
+    });
+
+    $(document).on("click", ".udatelibbook", function() {
+
+        $("#updateModal").modal("hide");
+        $("#bookModal").modal("show");
+
+    });
+    $(document).on("click", ".delBookBtn", function() {
+
+        var bookid = $(this).attr("data-bookid");
+        $.ajax({
+            url: "/api/books/" + bookid,
+            type: "DELETE"
+        }).then(function(data) {
+            if (data !== null) {
+                console.log("Thank you, the book was deleted");
+                $("#updateBooks").empty();
+                $("#updateModal").modal("hide");
+            }
+        })
+
+
+
+    });
+
+
+    // $(document).on("click", ".libBookBtn", function() {
+
+    //     var bookid = $(this).attr("data-bookid");
+    //     bookdata = {
+    //         availability = false,
+    //         userId = 1
+    //     }
+    //     $.ajax({
+    //             method: "PUT",
+    //             url: "/api/posts" + bookid,
+    //             data: bookdata
+    //         })
+    //         .then(function(res) {
+    //             console.log("You have borrowed this book");
+    //         });
+
+    // });
 
 })
 
