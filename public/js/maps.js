@@ -1,5 +1,6 @@
 var marker;
 var markers=[];
+var libraryId;
 $(document).ready(function() {
     var libraryLocations = [];
     
@@ -55,27 +56,25 @@ $(document).ready(function() {
                                 google.maps.event.addDomListener(marker, 'click', function() {
                                     // window.location.href = marker.url;
                                     console.log(this.title);
-                                    
+                                    libraryId=this.title
+                                    console.log("library ID outside for loop",libraryId);
+                                    loadPage()
                                 });
-                         
-
-                                // (markers[j]);
-                // clickMarker.push(marker)
-            }
-                // markers.push(marker);
-            // console.log(markers);
-            
-
-            
-            // marker.addListener('click', function() {
-            //    console.log("clicked");
-   
-               
-            // })
-        });
-            }
+        };
+            })
         }
-    })
+    }
+})
+
+
+    function loadPage()
+    {
+         window.location="library.html";
+    }
+         
+
+
+
 
     // google.maps.event.addListener(marker, 'click', function() {
     //     console.log("clicked");
