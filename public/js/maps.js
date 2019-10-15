@@ -132,13 +132,6 @@ $(document).ready(function() {
     }
 
 
-
-
-    $(document).on("click", ".addlib", function() {
-
-        showLibrary(1);
-    });
-
     $(document).on("click", ".book", function() {
         var lid = 2;
         $.get("/api/booksLibrary/" + lid, function(data) {
@@ -184,7 +177,7 @@ $(document).ready(function() {
 
     $(document).on("click", ".return", function() {
 
-        var userid = 2;
+        var userid = 1;
         $.get("/api/booksUser/" + userid, function(data) {
             if (data !== null) {
                 $("#userBooks").empty();
@@ -194,7 +187,7 @@ $(document).ready(function() {
                     book.addClass("userBook");
                     book.attr("data-id", data[i].id);
                     var btn = $("<button>");
-                    btn.addClass("userBookBtn");
+                    btn.addClass("userReturnBtn");
                     btn.attr("data-bookId", data[i].id);
                     btn.text("Return")
                     $("#userBooks").append(book, btn);
@@ -255,23 +248,43 @@ $(document).ready(function() {
     });
 
 
-    // $(document).on("click", ".libBookBtn", function() {
+    $(document).on("click", ".libBookBtn", function() {
+        console.log($(this).attr("data-bookid"));
+        var Bbid = $(this).attr("data-bookid");
+        var bookdata = {
+            id: Bbid,
+            availability: false,
+            userId: 1
+        }
+        $.ajax({
+                method: "PUT",
+                url: "/api/books",
+                data: bookdata
+            })
+            .then(function(res) {
+                console.log("You have borrowed this book");
+                $("#libBooks").empty();
+                $("#showBookModal").modal("hide");
+            });
 
-    //     var bookid = $(this).attr("data-bookid");
-    //     bookdata = {
-    //         availability = false,
-    //         userId = 1
-    //     }
-    //     $.ajax({
-    //             method: "PUT",
-    //             url: "/api/posts" + bookid,
-    //             data: bookdata
-    //         })
-    //         .then(function(res) {
-    //             console.log("You have borrowed this book");
-    //         });
-
-    // });
+    });
+    $(document).on("click", ".userReturnBtn", function() {
+        var Bbid = $(this).attr("data-bookid");
+        var bookdata = {
+            id: Bbid,
+            availability: true
+        }
+        $.ajax({
+                method: "PUT",
+                url: "/api/books",
+                data: bookdata
+            })
+            .then(function(res) {
+                console.log("You have returned this book");
+                $("#userBooks").empty();
+                $("#returnBookModal").modal("hide");
+            });
+    })
 
 })
 
