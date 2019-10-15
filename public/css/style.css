@@ -1,52 +1,72 @@
-* {
+/* * {
     box-sizing: border-box;
+} */
+
+body{
+    background-color: #E9EEE7;
 }
 
+/* .container{
+    display: flex;
+   
+} */
+
+#navbar {
+    background-color: #118409;
+    color: #28FE67;
+}
+
+.card {
+    padding: 1rem;
+    margin: 5rem;
+    text-align: center;
+    color:#750627; 
+}
 
 /* Style the search field */
 
-form.example input[type=text] {
+/* form.example input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
     width: 50%;
     background: #f1f1f1;
-}
-
+} */
+/* 
 form.example button:hover {
     background: #0b7dda;
-}
+} */
 
 
 /* Clear floats */
 
-form.example::after {
+/* form.example::after {
     content: "";
     clear: both;
     display: table;
-}
-
+} */
+/* 
 #div-for-map {
     height: 20%;
     width: 20%;
     position: fixed;
-}
-
+} */
+/* 
 #map {
     position: fixed !important;
     height: 50% !important;
     width: 30% !important;
     bottom: 10% !important;
     right: 40% !important;
-    /* top: 30% !important; */
-}
+    top: 30% !important;
+} */
 
 
 /* for the book search */
-
+/* 
 .bookSearch {
     background-color: rgba(48, 48, 61, 0.705);
     color: cornsilk;
     border: 2px solid rgb(145, 219, 33);
-}
+} */

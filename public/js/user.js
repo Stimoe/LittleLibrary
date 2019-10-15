@@ -6,13 +6,14 @@
           event.preventDefault();
           var loginUser = {
             email: $("#login-email").val().trim(),
-            password: $("login-password").val().trim(),
+            password: $("#login-password").val().trim(),
             
           };
-          $.get("/api/users")
+          $.post("/login",loginUser)
             .then(function(data) {
               console.log("login user", data);
-              res.json(loginUser);
+                window.location.href = '/search'
+            //   res.json(loginUser);
               //How do we redirect to user landing page?
             });
         });

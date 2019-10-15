@@ -5,6 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+require('dotenv').config();
 
 // Sets up the Express App
 // =============================================================
@@ -13,6 +14,8 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
+var session = require("express-session");
+
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +23,8 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static("public"));
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
+console.log(process.env.SESSION_SECRET)
 
 // Set Handlebars.
 // var exphbs = require("express-handlebars");
