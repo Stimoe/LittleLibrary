@@ -4,6 +4,7 @@
         $("#login").on("click", function(event) {
         // Make sure to preventDefault on a submit event.
           event.preventDefault();
+          console.log("click worked")
           var loginUser = {
             email: $("#login-email").val().trim(),
             password: $("#login-password").val().trim(),

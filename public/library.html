@@ -70,27 +70,36 @@
                                 </select>
                             </form>
                             <div>
-                                <strong>Author Name </strong>
-                                <br>
-                                <input id="photographer" type="text">
+                                <label for="rating" class="col-form-label">Rating:</label>
+                                <select id="rating" class="form-control" name="Rating">
+                                            <option value="1">1(NOT SO MUCH)</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5(LOVE IT)</option>
+                                        </select>
                             </div>
-                        </div>
-                        <div id="AdvSearh">
-                            <h5><a class="glyphicon glyphicon-search AdvSearchBtn" href="#">
-                                    ADVANCED SEARCH
-                                </a></h5>
-                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="addBook">Add book</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    ​ ​
-
-
-    <!-- the results -->
-    <div class="container bookSearch">
-        <div class="results">
+        <!-- the show library books modal -->
+        <div class="modal fade" id="showBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Show Books</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="libBooks">
 
         <div class="row justify-content-center">
             <button type="submit" class="btn btn-success addlib">Search Libraries</button>
@@ -117,35 +126,54 @@
                             <option value="genre3">genre3</option>
                         </select>
                     </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-6">
-                    <input id ="ratingInput" type="text" class="form-control" placeholder="Rating 1-10">
-                </div>
-                <div class="col-6">
-                        <input id ="bookImage" type="text" class="form-control" placeholder="Image of book">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-            </div>
-            <div class="form-row">
-                <div class="col-6 form-group">
-                    <label for="exampleFormControlTextarea1">Book review</label>
-                    <textarea id ="reviewInput" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="col-6">
-                    <button type="submit" class="btn btn-success searchBooks">Add book to library</button>
+        </div>
+
+        <!-- the return books modal -->
+        <div class="modal fade" id="returnBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Return Books</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="userBooks">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
 
+        <!-- the update books modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Library</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="updateBooks">
 
+                        </div>
 
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="./js/data.js" type="text/javascript"></script>
-        <script src="./js/library.js" type="text/javascript"></script>
+        <script src="./js/maps.js" type="text/javascript"></script>
         <script src="./js/books.js" type="text/javascript"></script>
 </body>
 

@@ -7,6 +7,7 @@ var flash = require('connect-flash');
 module.exports = function(app) {
 app.use(flash());
 app.post("/login", function(req,res) {
+  console.log("this is",req.body);
   db.user.findOne({
     where:{
       email:req.body.email
@@ -23,10 +24,10 @@ app.post("/login", function(req,res) {
       //delete existing user, add error
       req.session.user= false;
       req.session.error = "Username and/or Password is incorrect."
+      
       res.json(req.session);
-    
-  }
-  });
+    }
+  }).catch(err=>console.log(err))
 });
 // index route loads searchPage
 app.get("/search", function(req, res) {
