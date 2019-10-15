@@ -2,6 +2,9 @@
     box-sizing: border-box;
 }
 
+    #div-for-libraryMap{
+        display: none;
+}
 
 /* Style the search field */
 

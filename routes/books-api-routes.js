@@ -43,6 +43,17 @@ module.exports = function(app) {
             res.json(dbbooks);
         });
     });
+    app.get("/api/booksAuthor/:author", function(req, res) {
+        db.book.findAll({
+            where: {
+                author: req.params.author,
+                availability: true
+            }
+            // include: [db.Post]
+        }).then(function(dbbooks) {
+            res.json(dbbooks);
+        });
+    });
 
     app.get("/api/booksLibrary/:libraryId", function(req, res) {
         db.book.findAll({

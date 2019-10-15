@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="./css/style.css" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzjpYpTtvMYchl51VMmy-NaZNhLTcaYic"></script>
-    <script src="./js/data.js"></script> 
-    <script src="./js/library.js"></script>
-    <script src="./js/maps.js"></script>
+
     <title>Document</title>
 </head>
 
@@ -26,10 +24,12 @@
                 <div class="card-header adv">
                     <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Search"
                         aria-label="Search">
-                    <button class="searchBtn glyphicon glyphicon-search"> Search</button>
-                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseadv">
+                    <button id="searchTitle" class="searchBtn glyphicon glyphicon-search"> Search by Title</button>
+                    <button id="searchAuthor" class="searchBtn glyphicon glyphicon-search"> Search by Author</button>
+                    <button id="searchGenre" class="searchBtn glyphicon glyphicon-search"> Search by Genre</button>
+                    <!-- <a class="collapsed card-link" data-toggle="collapse" href="#collapseadv">
                         Advanced Search
-                    </a>
+                    </a> -->
                 </div>
                 <div id="collapseadv" class="collapse" data-parent="#accordion">
                     <div class="card-body">
@@ -70,13 +70,35 @@
             </div>
         </div>
     </div>
-    
+
     ​ ​
 
 
     <!-- the results -->
     <div class="container bookSearch">
-        <div class="results">
+        <div class=" results">
+
+        </div>
+    </div>
+    <div class="modal fade" id="clickedBookInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Book Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="clickedBook">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
     <div id="div-for-map">
@@ -84,7 +106,9 @@
             <div id="map" class="sticky"></div>
         </div>
     </div>
-
+    <script src="./js/data.js"></script>
+    <script src="./js/library.js"></script>
+    <script src="./js/maps.js"></script>
 </body>
 
 </html>
