@@ -4,15 +4,17 @@
         $("#login").on("click", function(event) {
         // Make sure to preventDefault on a submit event.
           event.preventDefault();
+          console.log("click worked")
           var loginUser = {
             email: $("#login-email").val().trim(),
-            password: $("login-password").val().trim(),
+            password: $("#login-password").val().trim(),
             
           };
-          $.get("/api/users")
+          $.post("/login",loginUser)
             .then(function(data) {
-              console.log("login user", data);
-              res.json(loginUser);
+              // console.log("login user", data);
+                window.location.href = '/search'
+            //   res.json(loginUser);
               //How do we redirect to user landing page?
             });
         });

@@ -148,38 +148,38 @@ $(document).ready(function() {
     // the function that add data to the db
     // $(document).on("click", ".addlib", addlib);
 
-  function addAll() {
-    //adding users
-    for (let j = 0; j < users.length; j++) {
-      $.post("/api/users", users[j]).then(function() {
-        console.log("created new user");
-      });
-    }
-    //adding libraries
-    for (let i = 0; i < libraries.length; i++) {
-      $.post("/api/libraries", libraries[i]).then(function() {
-        console.log("created new library");
-      });
-    }
-    //adding books
-    for (let k = 0; k < books.length; k++) {
-      $.post("/api/books", books[k]).then(function() {
-        console.log("created new books");
-      });
-    }
-    //adding reviews
-    for (let z = 0; z < reviews.length; z++) {
-      $.post("/api/reviews", reviews[z]).then(function() {
-        console.log("created new reviews");
-      });
-    }
-    //adding bookRequests
-    for (let r = 0; r < bookrequests.length; r++) {
-      $.post("/api/bookRequests", bookrequests[r]).then(function() {
-        console.log("created new bookrequests");
-      });
-    }
+    function addAll() {
+        //adding users
+        for (let j = 0; j < users.length; j++) {
+            $.post("/api/users", users[j]).then(function() {
+                console.log("created new user");
+            });
+        }
+        //adding libraries
+        for (let i = 0; i < libraries.length; i++) {
+            $.post("/api/libraries", libraries[i]).then(function() {
+                console.log("created new library");
+            });
+        }
+        //adding books
+        for (let k = 0; k < books.length; k++) {
+            $.post("/api/books", books[k]).then(function() {
+                console.log("created new books");
+            });
+        }
+        //adding reviews
+        for (let z = 0; z < reviews.length; z++) {
+            $.post("/api/reviews", reviews[z]).then(function() {
+                console.log("created new reviews");
+            });
+        }
+        //adding bookRequests
+        for (let r = 0; r < bookrequests.length; r++) {
+            $.post("/api/bookRequests", bookrequests[r]).then(function() {
+                console.log("created new bookrequests");
+            });
+        }
 
-  addAll();
-};
-});
+    };
+    addAll();
+})
