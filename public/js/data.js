@@ -44,7 +44,7 @@ $(document).ready(function() {
             genre: "genre2",
             image: "img",
             availability: true,
-            libraryId: 2,
+            libraryId: 3,
             userId: 2
         },
         {
@@ -53,7 +53,7 @@ $(document).ready(function() {
             genre: "genre3",
             image: "img",
             availability: true,
-            libraryId: 3,
+            libraryId: 5,
             userId: 3
         },
         {
