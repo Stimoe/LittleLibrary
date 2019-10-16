@@ -71,8 +71,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/81LpkLCJ4IL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 2,
-      user_id: 4
+      libraryId: 2,
+      userId: 4
     },
     {
       title: "Romeo and Juliet",
@@ -81,8 +81,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/51a0TnBwV7L._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 1,
-      user_id: 3
+      libraryId: 1,
+      userId: 3
     },
     {
       title: "Name of the Wind",
@@ -91,8 +91,8 @@ $(document).ready(function() {
       availability: true,
       image:
         "https://m.media-amazon.com/images/I/91ErGmnR6NL._AC_UY327_FMwebp_QL65_.jpg",
-      library_id: 1,
-      user_id: 3
+      libraryId: 1,
+      userId: 3
     },
     {
       title: "Crooked Kingdom",
@@ -101,8 +101,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/91caZTjrwqL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 1,
-      user_id: 5
+      libraryId: 1,
+      userId: 5
     },
     {
       title: "LLama LLama Red Pajama",
@@ -111,8 +111,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/A1hHoK2Uw-L._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 3,
-      user_id: 2
+      libraryId: 3,
+      userId: 2
     },
 
     {
@@ -122,8 +122,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/81XcHClQK8L._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 3,
-      user_id: 2
+      libraryId: 3,
+      userId: 2
     },
 
     {
@@ -133,8 +133,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/919XM42JQlL._AC_UL480_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 3,
-      user_id: 2
+      libraryId: 3,
+      userId: 2
     },
 
     {
@@ -144,8 +144,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/91a+a2YZEXL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 6,
-      user_id: 11
+      libraryId: 6,
+      userId: 9
     },
 
     {
@@ -155,8 +155,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/819mUKFiqJL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 7,
-      user_id: 5
+      libraryId: 7,
+      userId: 5
     },
 
     {
@@ -166,8 +166,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/81bFNmhKrTL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 13,
-      user_id: 1
+      libraryId: 8,
+      userId: 1
     },
 
     {
@@ -178,8 +178,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/51lnpupuVtL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 3,
-      user_id: 2
+      libraryId: 3,
+      userId: 2
     },
 
     {
@@ -190,8 +190,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/41gwu0NcCrL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 10,
-      user_id: 14
+      libraryId: 2,
+      userId: 4
     },
 
     {
@@ -201,8 +201,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/91fl6CaDxfL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 9,
-      user_id: 19
+      libraryId: 9,
+      userId: 10
     },
 
     {
@@ -212,8 +212,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/41T53nRtyoL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 8,
-      user_id: 17
+      libraryId: 8,
+      userId: 1
     },
 
     {
@@ -223,8 +223,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/61IBq8UhhoL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 7,
-      user_id: 2
+      libraryId: 7,
+      userId: 2
     },
 
     {
@@ -234,8 +234,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/8178rXr8qiL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 6,
-      user_id: 16
+      libraryId: 6,
+      userId: 6
     },
 
     {
@@ -245,8 +245,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/81FKdzAcx+L._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      library_id: 5,
-      user_id: 14
+      libraryId: 5,
+      userId: 4
     },
 
     {
@@ -255,8 +255,8 @@ $(document).ready(function() {
       genre: "Fantasy",
       image: "https://images-na.ssl-images-amazon.com/images/I/61Ng-W9EhBL.jpg",
       availability: true,
-      library_id: 10,
-      user_id: 12
+      libraryId: 10,
+      userId: 2
     },
     {
       title: "Something Under my bed is drooling",
@@ -264,8 +264,8 @@ $(document).ready(function() {
       genre: "Comics",
       image: "",
       availability: true,
-      library_id: 4,
-      user_id: 3
+      libraryId: 4,
+      userId: 3
     },
     {
       title: "Ghost of Gondwana",
@@ -273,8 +273,8 @@ $(document).ready(function() {
       genre: "Nature",
       image: "",
       availability: true,
-      library_id: 3,
-      user_id: 4
+      libraryId: 3,
+      userId: 4
     }
   ];
 
