@@ -51,7 +51,8 @@ var markerArray=[]
 
                     lat2 = data[j].lattitude
                     long2 = data[j].longitude
-                    idOfLibrary = JSON.stringify(data[j].id)
+                    idOfLibrary = JSON.stringify(data[j].location)
+                    titleOfLibrary=JSON.stringify(data[j].id)
                     // location=data[i].location
 
                     markerToMake = {
@@ -65,7 +66,8 @@ var markerArray=[]
                     marker = new google.maps.Marker({
                         position: markerToMake,
                         map: map,
-                        title: idOfLibrary
+                        title: idOfLibrary,
+                        id: titleOfLibrary
 
                     })
                     markerArray.push(marker);
@@ -73,7 +75,8 @@ var markerArray=[]
                     google.maps.event.addDomListener(marker, 'click', function () {
                         // window.location.href = marker.url;
                         console.log(this.title);
-                        libraryId = this.title
+                        libraryId = this.id
+                        titleOfLibrary=this.title
                         console.log("library ID outside for loop", libraryId);
                         libarr = [];
                         libarr.push(libraryId);
@@ -197,7 +200,8 @@ var markerArray=[]
                     
                     lat2 = response.lattitude
                     long2 = response.longitude
-                    idOfLibrary = JSON.stringify(response.id)
+                    idOfLibrary = JSON.stringify(response.location)
+                    titleOfLibrary=JSON.stringify(response.id)
                     // location=data[i].location
                     markerToMake = {
                         lat: lat2,
@@ -209,14 +213,16 @@ var markerArray=[]
                     var marker = new google.maps.Marker({
                         position: markerToMake,
                         map: map,
-                        title: idOfLibrary
+                        title: idOfLibrary,
+                        id: titleOfLibrary
 
                     })
                     markerArray.push(marker);
                     google.maps.event.addDomListener(marker, 'click', function () {
                         // window.location.href = marker.url;
                         console.log(this.title);
-                        libraryId = this.title
+                        libraryId = this.id
+                        libraryTitle=this.title
                         console.log("library ID outside for loop", libraryId);
                         libarr = [];
                         libarr.push(libraryId);
@@ -294,13 +300,13 @@ var markerArray=[]
                 var author = $("<h3>");
                 var genre = $("<h3>");
                 var libraryId = $("<h3>");
-                //    var image=$("<img>");
+                   var image=$("<img>");
                 if (data) {
                     title.text("Title: " + data.title);
                     author.text("Author: " + data.author);
                     genre.text("Genre: " + data.genre);
-                    libraryId.text(data.libraryId);
-                    //    image.attr("src",data.image);
+                    // libraryId.text(data.library.location);
+                       image.attr("src",data.image);
                 }
                 $.get("/api/bookReviews/" + id).then(function(data) {
                     var body = $("<h3>");
@@ -312,7 +318,7 @@ var markerArray=[]
 
                     $("#clickedBook").empty();
                     $("#clickedBook").addClass("booksResults");
-                    $("#clickedBook").append(title, author, genre, rating, body, libraryId)
+                    $("#clickedBook").append(image, title, author, genre, rating, body)
 
                 })
             })
@@ -374,13 +380,13 @@ var markerArray=[]
                 var author = $("<h3>");
                 var genre = $("<h3>");
                 var libraryId = $("<h3>");
-                //    var image=$("<img>");
+                   var image=$("<img>");
                 if (data) {
                     title.text("Title: " + data.title);
                     author.text("Author: " + data.author);
                     genre.text("Genre: " + data.genre);
-                    libraryId.text("Library: " + data.libraryId);
-                    //    image.attr("src",data.image);
+                    // libraryId.text("Library: " + data.libraryId);
+                       image.attr("src",data.image);
                 }
                 $.get("/api/bookReviews/" + id).then(function(data) {
                     var body = $("<h3>");
@@ -391,7 +397,7 @@ var markerArray=[]
 
                     }
                     $("#insideBook").empty();
-                    $("#insideBook").append(title, author, genre, rating, body, libraryId)
+                    $("#insideBook").append(image, title, author, genre, rating, body)
 
                 })
             })

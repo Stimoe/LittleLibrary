@@ -137,16 +137,16 @@ $(document).ready(function() {
       userId: 2
     },
 
-    // {
-    //   title: "The Witness",
-    //   author: "Nora Roberts",
-    //   genre: "Romance",
-    //   image:
-    //     "https://m.media-amazon.com/images/I/91a+a2YZEXL._AC_UY327_FMwebp_QL65_.jpg",
-    //   availability: true,
-    //   libraryId: 6,
-    //   userId: 11
-    // },
+    {
+      title: "The Witness",
+      author: "Nora Roberts",
+      genre: "Romance",
+      image:
+        "https://m.media-amazon.com/images/I/91a+a2YZEXL._AC_UY327_FMwebp_QL65_.jpg",
+      availability: true,
+      libraryId: 6,
+      userId: 9
+    },
 
     {
       title: "The Girl with the Dragon Tattoo",
@@ -166,7 +166,7 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/81bFNmhKrTL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      libraryId: 13,
+      libraryId: 8,
       userId: 1
     },
 
@@ -190,8 +190,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/41gwu0NcCrL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      libraryId: 10,
-      userId: 14
+      libraryId: 2,
+      userId: 4
     },
 
     {
@@ -202,7 +202,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/91fl6CaDxfL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 9,
-      userId: 19
+      userId: 10
     },
 
     {
@@ -213,7 +213,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/41T53nRtyoL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 8,
-      userId: 17
+      userId: 1
     },
 
     {
@@ -235,7 +235,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/8178rXr8qiL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 6,
-      userId: 16
+      userId: 6
     },
 
     {
@@ -246,7 +246,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/81FKdzAcx+L._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 5,
-      userId: 14
+      userId: 4
     },
 
     {
@@ -256,7 +256,7 @@ $(document).ready(function() {
       image: "https://images-na.ssl-images-amazon.com/images/I/61Ng-W9EhBL.jpg",
       availability: true,
       libraryId: 10,
-      userId: 12
+      userId: 2
     },
     {
       title: "Something Under my bed is drooling",
