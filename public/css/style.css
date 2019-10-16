@@ -19,7 +19,9 @@ body{
     background-color: #118409;
     color: #28FE67;
 }
-
+.library-nav .nav-link {
+    font-size:2rem;
+}
 .card {
     padding: 1rem;
     margin: 5rem;

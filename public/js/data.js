@@ -17,6 +17,48 @@ $(document).ready(function() {
             password: "pass",
             name: "Thomas",
             zipcode: 98121
+        },
+        {
+            email: "farfi@farfi.com.ca",
+            password: "password",
+            name: "Farfignewton",
+            zipcode: 98105
+        },
+        {
+            email: "anakin@starwars.com",
+            password: "password",
+            name: "anakin",
+            zipcode: 98105
+        },
+        {
+            email: "quigonjin@starwars.com",
+            password: "password",
+            name: "Thomas",
+            zipcode: 98115
+        },
+        {
+            email: "yoda@starwars.com",
+            password: "password",
+            name: "Thomas",
+            zipcode: 98103
+        },
+        {
+            email: "asajjventress@starwars.com",
+            password: "pass",
+            name: "Asajj",
+            zipcode: 98121
+        },
+        {
+            email: "bobafett@starwars.com",
+            password: "password",
+            name: "Boba",
+            zipcode: 98121
+        },
+        {
+            email: "Lando@starwars.com",
+            password: "password",
+            name: "Thomas",
+            zipcode: 90101
         }
     ];
 
@@ -92,6 +134,38 @@ $(document).ready(function() {
             userId: 3
         },
         {
+            longitude: -122.28717,
+            lattitude: 47.70717,
+            location: "10725 39th Ave NE, Seattle WA 98125",
+            image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00Pd000000Mm5opEAB",
+            description: "We went for a different look for our library- more of an up cycled look rather than another cute little cedar shake cottage. Our library is an old pie cooler from a diner - completely weathdrproof! It has two levels - the lower one for kid books, upper for adults.",
+            userId: 2
+        },
+        {
+            longitude: -122.3626,
+            lattitude: 47.67386,
+            location: "6050 5th Ave NW, Seattle, WA 98107",
+            image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00Pd000000cCltrEAC",
+            description: "built this for my wife and son using almost all found and recycled material. Features solar LED lighting inside and out",
+            userId: 2
+        },
+        {
+            longitude: -122.28448,
+            lattitude: 47.67615,
+            location: "6514 40th Ave NE, Seattle WA 98115",
+            description: "PCC Community Markets celebrates the joy of cooking in community with cookbooks of all kinds at our View Ridge location. Take a book, pack up a picnic and head to the nearby Magnusson Park or View Ridge Ballfield to enjoy.",
+            image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00P0W00000mmbhdUAA",
+            userId: 2
+        },
+        {
+            longitude: -122.2833433,
+            lattitude: 47.6641185,
+            location: "Seattle Childrens Hospital, 4800 Sand Point Way NE, Seattle WA 98105",
+            image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00P0W00000mmbhdUAA",
+            description: "Little Free Library located in Radiology Common Area",
+            userId: 3
+        },
+        {
             longitude: -122.34272,
             lattitude: 47.61149,
             location: "2008 First Ave Seattle WA 98121",
@@ -99,6 +173,15 @@ $(document).ready(function() {
             description: "Essentia's Seattle store is on the edge of the Belltown neighborhood in Seattle. At first glance it's part shopping district and part salons and night clubs. Take one look up and you'll see the other side of Belltown, the residences - condos and apartments - that fill this unique neighborhood. We're always looking for ways to connect with our city and give back. The Seattle store's employees also happen to read a lot of books. Adding a Little Free Library seemed a natural fit.",
             userId: 2
         },
+        {
+            longitude: -122.35602,
+            lattitude: 47.63313,
+            location: "1525 1st Avenue N Seattle WA 98109",
+            image: "https://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00Pd000000IiuSPEAZ://littlefreelibrary.secure.force.com/servlet/servlet.FileDownload?file=00Pd000000IiuQvEAJ",
+            description: "We love the other libraries in our neighborhood and decided to make one of our own. With the help of a good friend who is an excellent carpenter, the dream became a reality!",
+            userId: 2
+        },
+            
         {
             longitude: -122.3117329,
             lattitude: 47.6084887,
