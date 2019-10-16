@@ -26,19 +26,20 @@ body{
     text-align: center;
     color:#750627; 
 }
-#div-for-map {
+#map {
+    position: fixed !important;
+    height: 80% !important;
+   width: 40% !important;
+   bottom: 10% !important;
+   right: 20% !important;
+   top: 20% !important;
+} 
+/* #div-for-map {
     height: 20%;
     width: 20%;
     position: fixed;
 }
-#map {
-    position: fixed !important;
-    height: 50% !important;
-    width: 30% !important;
-    bottom: 10% !important;
-    right: 40% !important;
-    top: 50% !important;
-} 
+
 .bookSearch {
     background-color: rgba(48, 48, 61, 0.705);
     color: cornsilk;
