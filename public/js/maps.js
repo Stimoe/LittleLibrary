@@ -130,7 +130,7 @@ var markerArray=[]
             }
             markerArray.length = 0;
           }
-        var input = $("#searchBox").val().trim();
+        var input = $("#mySelect").val().trim();
         if (input !== "") {
             //search by genre
             $.get("/api/booksGenre/" + input, function(data) {
