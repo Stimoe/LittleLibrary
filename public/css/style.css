@@ -28,14 +28,22 @@ body {
     text-align: center;
     color: #750627;
 }
+
 #map {
     position: fixed !important;
     height: 80% !important;
-   width: 40% !important;
-   bottom: 10% !important;
-   right: 20% !important;
-   top: 20% !important;
-} 
+    width: 50% !important;
+    margin-bottom: 5% !important;
+    right: 3% !important;
+    top: 15% !important;
+}
+
+
+/* #myMap {
+    height: 90%;
+} */
+
+
 /* #div-for-map {
     height: 20%;
     width: 20%;
@@ -88,6 +96,10 @@ form.example::after {
 
 #profile {
     margin-top: 3%;
+}
+
+#searchArea {
+    text-align-last: center;
 }
 
 

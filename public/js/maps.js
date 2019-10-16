@@ -3,22 +3,18 @@ var markers = [];
 var libraryId;
 var libarr = [];
 var dataTest;
-$(document).ready(function () {
+$(document).ready(function() {
     var libraryLocations = [];
 
-    $.get("/api/libraries").then(function (data) {
+    $.get("/api/libraries").then(function(data) {
         console.log("first for loop", data);
 
         for (let i = 0; i < data.length; i++) {
             // console.log("this is logging the whole libraries in for loop", data);
             libraryLocations.push(data[i])
-
-
-
         }
-        // console.log(libraryLocations);
+        console.log(libraryLocations);
 
-        // getLocation()
         getLocation(libraryLocations)
 
 
@@ -109,7 +105,7 @@ var markerArray=[]
         if (input !== "") {
             //search by title
             libraryLocations = []
-            $.get("/api/booksTitle/" + input, function (data) {
+            $.get("/api/booksTitle/" + input, function(data) {
                 if (data !== null) {
                     for (let j = 0; j < data.length; j++) {
                         libraryLocations.push(data[j].libraryId)
@@ -117,7 +113,7 @@ var markerArray=[]
                         var result = $("<h3>");
                         result.addClass("booksResults");
                         result.attr("data-bookid", data[j].id);
-                        result.text(data[j].title + "           " + data[j].author);
+                        result.text("Title: " + data[j].title + "     Author: " + data[j].author);
                         $(".results").append(result);
                     }
                     makeSearchMarkers(libraryLocations)
@@ -137,14 +133,14 @@ var markerArray=[]
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by genre
-            $.get("/api/booksGenre/" + input, function (data) {
+            $.get("/api/booksGenre/" + input, function(data) {
                 if (data !== null) {
                     for (let k = 0; k < data.length; k++) {
                         libraryLocations.push(data[k].libraryId)
                         var result = $("<h3>");
                         result.addClass("booksResults");
                         result.attr("data-bookid", data[k].id);
-                        result.text(data[k].title + "    " + data[k].author);
+                        result.text("Title: " + data[k].title + "     Author: " + data[k].author);
                         $(".results").append(result);
                     }
                     makeSearchMarkers(libraryLocations)
@@ -164,14 +160,14 @@ var markerArray=[]
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by genre
-            $.get("/api/booksAuthor/" + input, function (data) {
+            $.get("/api/booksAuthor/" + input, function(data) {
                 if (data !== null) {
                     for (let i = 0; i < data.length; i++) {
                         libraryLocations.push(data[j].libraryId)
                         var result = $("<h3>");
                         result.addClass("booksResults");
                         result.attr("data-bookid", data[i].id);
-                        result.text(data[i].title + "    " + data[i].author);
+                        result.text("Title: " + data[i].title + "     Author: " + data[i].author);
                         $(".results").append(result);
                     }
                     makeSearchMarkers(libraryLocations)
@@ -252,9 +248,16 @@ var markerArray=[]
             userId: uId
         };
 
-        $.post("/api/books", book).then(function (data) {
+        $.post("/api/books", book).then(function(data) {
             console.log("created new books");
             addReview(data.id)
+        });
+        var userLib = {
+            userId: localStorage.getItem("userId"),
+            libraryId: localStorage.getItem("libraryId")
+        }
+        $.post("/api/userLibraries", userLib).then(function(data) {
+            console.log("created new userLibrary");
         });
     });
 
@@ -267,7 +270,7 @@ var markerArray=[]
             bookId: bookID,
             userId: uId
         }
-        $.post("/api/reviews", review).then(function () {
+        $.post("/api/reviews", review).then(function() {
             console.log("created new reviews");
         });
         $("#title").val("");
@@ -285,25 +288,27 @@ var markerArray=[]
         var id = $(this).attr("data-bookid")
 
         $.get("/api/books/" + id).then(
-            function (data) {
+            function(data) {
                 console.log("the data this time ", data);
-
                 var title = $("<h3>");
-                title.text("Title: " + data.title);
                 var author = $("<h3>");
-                author.text("Author: " + data.author);
                 var genre = $("<h3>");
-                genre.text("Genre: " + data.genre);
                 var libraryId = $("<h3>");
-                libraryId.text(data.libraryId);
                 //    var image=$("<img>");
-                //    image.attr("src",data.image);
-                $.get("/api/bookReviews/" + id).then(function (data) {
+                if (data) {
+                    title.text("Title: " + data.title);
+                    author.text("Author: " + data.author);
+                    genre.text("Genre: " + data.genre);
+                    libraryId.text(data.libraryId);
+                    //    image.attr("src",data.image);
+                }
+                $.get("/api/bookReviews/" + id).then(function(data) {
                     var body = $("<h3>");
-                    body.text("Review: " + data.body);
                     var rating = $("<h3>");
-                    rating.text("Rating: " + data.rating);
-
+                    if (data) {
+                        body.text("Review: " + data.body);
+                        rating.text("Rating: " + data.rating);
+                    }
 
                     $("#clickedBook").empty();
                     $("#clickedBook").addClass("booksResults");
@@ -316,17 +321,9 @@ var markerArray=[]
     });
 
 
-
-
-
-
-
-    //library page
-
-
-    $(document).on("click", ".book", function () {
+    $(document).on("click", ".book", function() {
         var lid = localStorage.getItem("libraryId");
-        $.get("/api/booksLibrary/" + lid, function (data) {
+        $.get("/api/booksLibrary/" + lid, function(data) {
             if (data !== null) {
                 $("#libBooks").empty();
                 for (let i = 0; i < data.length; i++) {
@@ -340,8 +337,8 @@ var markerArray=[]
                     btn.text("Borrow")
                     $("#libBooks").append(book, btn);
 
-
                 }
+
                 $("#showBookModal").modal("toggle");
             }
         });
@@ -352,7 +349,7 @@ var markerArray=[]
         var name = localStorage.getItem("userName");
         $("#userName").text(name);
         console.log("library id in showlibrary ", id);
-        $.get("/api/libraries/" + id, function (data) {
+        $.get("/api/libraries/" + id, function(data) {
             dataTest = data
             idLibraryNew = data
             var location = $("<h2>");
@@ -367,31 +364,30 @@ var markerArray=[]
         })
     }
 
-
-    $(document).on("click", ".libBook", function () {
+    $(document).on("click", ".libBook", function() {
         var id = $(this).attr("data-id")
         console.log("this is the idddddddddd     " + id)
         $.get("/api/books/" + id).then(
-            function (data) {
+            function(data) {
                 console.log("the data this time ", data);
                 var title = $("<h3>");
                 var author = $("<h3>");
                 var genre = $("<h3>");
                 var libraryId = $("<h3>");
-                if (data) {
-                    title.text(data.title);
-                    author.text(data.author);
-                    genre.text(data.genre);
-                    libraryId.text(data.libraryId);
-                }
                 //    var image=$("<img>");
-                //    image.attr("src",data.image);
-                $.get("/api/bookReviews/" + id).then(function (data) {
+                if (data) {
+                    title.text("Title: " + data.title);
+                    author.text("Author: " + data.author);
+                    genre.text("Genre: " + data.genre);
+                    libraryId.text("Library: " + data.libraryId);
+                    //    image.attr("src",data.image);
+                }
+                $.get("/api/bookReviews/" + id).then(function(data) {
                     var body = $("<h3>");
                     var rating = $("<h3>");
                     if (data) {
-                        body.text(data.body);
-                        rating.text(data.rating);
+                        body.text("Review: " + data.body);
+                        rating.text("Rating: " + data.rating);
 
                     }
                     $("#insideBook").empty();
@@ -403,15 +399,15 @@ var markerArray=[]
 
     });
 
-    $(document).on("click", ".return", function () {
+    $(document).on("click", ".return", function() {
 
         var userid = localStorage.getItem("userId");
-        $.get("/api/booksUser/" + userid, function (data) {
+        $.get("/api/booksUser/" + userid, function(data) {
             if (data !== null) {
                 $("#userBooks").empty();
                 for (let i = 0; i < data.length; i++) {
                     var book = $("<h3>");
-                    book.text(data[i].title);
+                    book.text("Title: " + data[i].title);
                     book.addClass("libBook");
                     book.attr("data-id", data[i].id);
                     var btn = $("<button>");
@@ -421,26 +417,27 @@ var markerArray=[]
                     $("#userBooks").append(book, btn);
 
                 }
+
                 $("#returnBookModal").modal("toggle");
             }
         });
-    })
 
+    });
 
-    $(document).on("click", ".update", function () {
-        var lid = 2;
-        $.get("/api/booksLibrary/" + lid, function (data) {
+    $(document).on("click", ".update", function() {
+        var lid = localStorage.getItem("libraryId");
+        $.get("/api/booksLibrary/" + lid, function(data) {
             if (data !== null) {
                 $("#updateBooks").empty();
                 for (let i = 0; i < data.length; i++) {
                     var book = $("<h3>");
-                    book.text(data[i].title);
+                    book.text("Title: " + data[i].title);
                     book.addClass("libBook");
                     book.attr("data-id", data[i].id);
                     var btn = $("<button>");
                     btn.addClass("delBookBtn");
-                    btn.attr("data-bookId", data[i].id);
-                    btn.text("Delete")
+                    btn.attr("data-bookid", data[i].id);
+                    btn.text("Delete");
                     $("#updateBooks").append(book, btn);
 
                 }
@@ -450,30 +447,32 @@ var markerArray=[]
         });
     });
 
-    $(document).on("click", ".udatelibbook", function () {
+    $(document).on("click", ".udatelibbook", function() {
 
         $("#updateModal").modal("hide");
         $("#bookModal").modal("show");
 
     });
-    $(document).on("click", ".delBookBtn", function () {
+    $(document).on("click", ".delBookBtn", function() {
 
         var bookid = $(this).attr("data-bookid");
         $.ajax({
             url: "/api/books/" + bookid,
             type: "DELETE"
-        }).then(function (data) {
+        }).then(function(data) {
             if (data !== null) {
                 console.log("Thank you, the book was deleted");
                 $("#updateBooks").empty();
                 $("#updateModal").modal("hide");
             }
         })
+
+
+
     });
 
 
-
-    $(document).on("click", ".libBookBtn", function () {
+    $(document).on("click", ".libBookBtn", function() {
         console.log($(this).attr("data-bookid"));
         var Bbid = $(this).attr("data-bookid");
         var uId = localStorage.getItem("userId");
@@ -487,20 +486,23 @@ var markerArray=[]
                 url: "/api/books",
                 data: bookdata
             })
-            .then(function (res) {
+            .then(function(res) {
                 console.log("You have borrowed this book");
                 $("#libBooks").empty();
                 $("#showBookModal").modal("hide");
             });
+
+
+        var userLib = {
+            userId: localStorage.getItem("userId"),
+            libraryId: localStorage.getItem("libraryId")
+        }
+        $.post("/api/userLibraries", userLib).then(function(data) {
+            console.log("created new userLibrary");
+        });
+
     });
-
-
-
-
-
-
-
-    $(document).on("click", ".userReturnBtn", function () {
+    $(document).on("click", ".userReturnBtn", function() {
         var Bbid = $(this).attr("data-bookid");
         var bookdata = {
             id: Bbid,
@@ -511,7 +513,7 @@ var markerArray=[]
                 url: "/api/books",
                 data: bookdata
             })
-            .then(function (res) {
+            .then(function(res) {
                 console.log("You have returned this book");
                 $("#userBooks").empty();
                 $("#returnBookModal").modal("hide");
@@ -524,7 +526,6 @@ var markerArray=[]
 
     }
     showLibrary()
-
 
 
 })
