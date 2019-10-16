@@ -3,10 +3,10 @@ var markers = [];
 var libraryId;
 var libarr = [];
 var dataTest;
-$(document).ready(function() {
+$(document).ready(function () {
     var libraryLocations = [];
 
-    $.get("/api/libraries").then(function(data) {
+    $.get("/api/libraries").then(function (data) {
         console.log("first for loop", data);
 
         for (let i = 0; i < data.length; i++) {
@@ -16,16 +16,25 @@ $(document).ready(function() {
 
 
         }
-        console.log(libraryLocations);
+        // console.log(libraryLocations);
 
+        // getLocation()
         getLocation(libraryLocations)
 
 
     })
 
+
+
+
+
+
+
+
+
     function getLocation(data) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
                 // console.log("inside function",libraries.length);
                 // console.log("inside function",libraries);
                 lat = position.coords.latitude,
@@ -33,56 +42,60 @@ $(document).ready(function() {
                 console.log("my location", lat, lng);
 
                 var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 13,
-                        center: new google.maps.LatLng(lat, lng),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    })
-                    // console.log("inside locations function",libraries.length)
+                    zoom: 13,
+                    center: new google.maps.LatLng(lat, lng),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                })
+
+                // console.log("inside locations function",libraries.length)
+                console.log("the data", data);
 
                 for (let j = 0; j < data.length; j++) {
                     lat2 = data[j].lattitude
                     long2 = data[j].longitude
                     idOfLibrary = JSON.stringify(data[j].id)
-                        // location=data[i].location
+                    // location=data[i].location
                     markerToMake = {
                         lat: lat2,
                         lng: long2
                     }
-                    console.log(idOfLibrary);
+                    console.log("id",idOfLibrary);
+                    console.log("new marker to make ", markerToMake);
 
                     var marker = new google.maps.Marker({
                         position: markerToMake,
                         map: map,
                         title: idOfLibrary
 
-                    });
+                    })
+                
 
-                    google.maps.event.addDomListener(marker, 'click', function() {
-                        // window.location.href = marker.url;
-                        console.log(this.title);
-                        libraryId = this.title
-                        console.log("library ID outside for loop", libraryId);
-                        libarr = [];
-                        libarr.push(libraryId);
-                        console.log("checking if here ", libraryId);
-                        localStorage.setItem("libraryId", libraryId);
+                google.maps.event.addDomListener(marker, 'click', function () {
+                    // window.location.href = marker.url;
+                    console.log(this.title);
+                    libraryId = this.title
+                    console.log("library ID outside for loop", libraryId);
+                    libarr = [];
+                    libarr.push(libraryId);
+                    console.log("checking if here ", libraryId);
+                    localStorage.setItem("libraryId", libraryId);
 
-                        loadPage()
+                    loadPage()
 
-                    });
-                };
+                
+                })
+            }
             })
         }
     }
-
     //library page
-    $(document).on("click", "#searchTitle", function() {
+    $(document).on("click", "#searchTitle", function () {
 
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by title
             libraryLocations = []
-            $.get("/api/booksTitle/" + input, function(data) {
+            $.get("/api/booksTitle/" + input, function (data) {
                 if (data !== null) {
                     for (let j = 0; j < data.length; j++) {
                         libraryLocations.push(data[j].libraryId)
@@ -93,17 +106,17 @@ $(document).ready(function() {
                         result.text(data[j].title + "           " + data[j].author);
                         $(".results").append(result);
                     }
-                    getLocation(libraryLocations)
+                    // getLocation(libraryLocations)
                 }
             });
         }
     });
-    $(document).on("click", "#searchGenre", function() {
+    $(document).on("click", "#searchGenre", function () {
 
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by genre
-            $.get("/api/booksGenre/" + input, function(data) {
+            $.get("/api/booksGenre/" + input, function (data) {
                 if (data !== null) {
                     for (let k = 0; k < data.length; k++) {
                         libraryLocations.push(data[k].libraryId)
@@ -113,17 +126,17 @@ $(document).ready(function() {
                         result.text(data[k].title + "    " + data[k].author);
                         $(".results").append(result);
                     }
-                    getLocation(libraryLocations)
+                    // getLocation(libraryLocations)
                 }
             });
         }
     })
-    $(document).on("click", "#searchAuthor", function() {
+    $(document).on("click", "#searchAuthor", function () {
 
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by genre
-            $.get("/api/booksAuthor/" + input, function(data) {
+            $.get("/api/booksAuthor/" + input, function (data) {
                 if (data !== null) {
                     for (let i = 0; i < data.length; i++) {
                         libraryLocations.push(data[j].libraryId)
@@ -133,12 +146,12 @@ $(document).ready(function() {
                         result.text(data[i].title + "    " + data[i].author);
                         $(".results").append(result);
                     }
-                    getLocation(libraryLocations)
+                    // getLocation(libraryLocations)
                 }
             });
         }
     })
-    $(document).on("click", "#addBook", function() {
+    $(document).on("click", "#addBook", function () {
 
         var uId = localStorage.getItem("userId");
         var lId = localStorage.getItem("libraryId");
@@ -152,7 +165,7 @@ $(document).ready(function() {
             userId: uId
         };
 
-        $.post("/api/books", book).then(function(data) {
+        $.post("/api/books", book).then(function (data) {
             console.log("created new books");
             addReview(data.id)
         });
@@ -167,7 +180,7 @@ $(document).ready(function() {
             bookId: bookID,
             userId: uId
         }
-        $.post("/api/reviews", review).then(function() {
+        $.post("/api/reviews", review).then(function () {
             console.log("created new reviews");
         });
         $("#title").val("");
@@ -179,13 +192,28 @@ $(document).ready(function() {
         $("#bookModal").modal("hide");
     }
 
+    // function makeSearchMarkers(data) {
+    //     libraryLocations = [];
+    //     console.log("The newest data ", data);
+    //     for (let m = 0; m < data.length; m++) {
 
-    $(document).on("click", ".booksResults", function() {
+    //         $.get("/api/libraries/" + data[m], function (response) {
+    //             libraryLocations.push(response)
+    //             console.log("the major data ", response);
+
+    //         })
+    //         //     console.log("hopefully all library info ", libraryLocations);
+    //         // getLocation(libraryLocations)
+    //     }
+    // }
+
+
+    $(document).on("click", ".booksResults", function () {
         console.log("clicked")
         var id = $(this).attr("data-bookid")
 
         $.get("/api/books/" + id).then(
-            function(data) {
+            function (data) {
                 console.log("the data this time ", data);
 
                 var title = $("<h3>");
@@ -198,7 +226,7 @@ $(document).ready(function() {
                 libraryId.text(data.libraryId);
                 //    var image=$("<img>");
                 //    image.attr("src",data.image);
-                $.get("/api/bookReviews/" + id).then(function(data) {
+                $.get("/api/bookReviews/" + id).then(function (data) {
                     var body = $("<h3>");
                     body.text("Review: " + data.body);
                     var rating = $("<h3>");
@@ -219,14 +247,14 @@ $(document).ready(function() {
 
 
 
-    $(document).on("click", ".addlib", function() {
 
-        // showLibrary(1);
-    });
 
-    $(document).on("click", ".book", function() {
+    //library page
+
+
+    $(document).on("click", ".book", function () {
         var lid = localStorage.getItem("libraryId");
-        $.get("/api/booksLibrary/" + lid, function(data) {
+        $.get("/api/booksLibrary/" + lid, function (data) {
             if (data !== null) {
                 $("#libBooks").empty();
                 for (let i = 0; i < data.length; i++) {
@@ -240,8 +268,8 @@ $(document).ready(function() {
                     btn.text("Borrow")
                     $("#libBooks").append(book, btn);
 
-                }
 
+                }
                 $("#showBookModal").modal("toggle");
             }
         });
@@ -252,7 +280,7 @@ $(document).ready(function() {
         var name = localStorage.getItem("userName");
         $("#userName").text(name);
         console.log("library id in showlibrary ", id);
-        $.get("/api/libraries/" + id, function(data) {
+        $.get("/api/libraries/" + id, function (data) {
             dataTest = data
             idLibraryNew = data
             var location = $("<h2>");
@@ -266,23 +294,13 @@ $(document).ready(function() {
             $("#libraryInfo").append(location, img, des);
         })
     }
-    // function loadLibraries(data){
-    //     var location = $("<h2>");
-    //     var img = $("<img>");
-    //     console.log("new",data.location, data.image)
-    //     location.text(data.location);
-    //     img.attr("src", data.image)
-    //     img.addClass("libImage");
-    //     $("#libraryInfo").empty();
-    //     $("#libraryInfo").append(location, img);
 
-    // }
 
-    $(document).on("click", ".libBook", function() {
+    $(document).on("click", ".libBook", function () {
         var id = $(this).attr("data-id")
         console.log("this is the idddddddddd     " + id)
         $.get("/api/books/" + id).then(
-            function(data) {
+            function (data) {
                 console.log("the data this time ", data);
                 var title = $("<h3>");
                 var author = $("<h3>");
@@ -296,7 +314,7 @@ $(document).ready(function() {
                 }
                 //    var image=$("<img>");
                 //    image.attr("src",data.image);
-                $.get("/api/bookReviews/" + id).then(function(data) {
+                $.get("/api/bookReviews/" + id).then(function (data) {
                     var body = $("<h3>");
                     var rating = $("<h3>");
                     if (data) {
@@ -313,10 +331,10 @@ $(document).ready(function() {
 
     });
 
-    $(document).on("click", ".return", function() {
+    $(document).on("click", ".return", function () {
 
         var userid = localStorage.getItem("userId");
-        $.get("/api/booksUser/" + userid, function(data) {
+        $.get("/api/booksUser/" + userid, function (data) {
             if (data !== null) {
                 $("#userBooks").empty();
                 for (let i = 0; i < data.length; i++) {
@@ -331,16 +349,15 @@ $(document).ready(function() {
                     $("#userBooks").append(book, btn);
 
                 }
-
                 $("#returnBookModal").modal("toggle");
             }
         });
+    })
 
-    });
 
-    $(document).on("click", ".update", function() {
-        var lid = localStorage.getItem("libraryId");
-        $.get("/api/booksLibrary/" + lid, function(data) {
+    $(document).on("click", ".update", function () {
+        var lid = 2;
+        $.get("/api/booksLibrary/" + lid, function (data) {
             if (data !== null) {
                 $("#updateBooks").empty();
                 for (let i = 0; i < data.length; i++) {
@@ -350,8 +367,8 @@ $(document).ready(function() {
                     book.attr("data-id", data[i].id);
                     var btn = $("<button>");
                     btn.addClass("delBookBtn");
-                    btn.attr("data-bookid", data[i].id);
-                    btn.text("Delete");
+                    btn.attr("data-bookId", data[i].id);
+                    btn.text("Delete")
                     $("#updateBooks").append(book, btn);
 
                 }
@@ -361,32 +378,30 @@ $(document).ready(function() {
         });
     });
 
-    $(document).on("click", ".udatelibbook", function() {
+    $(document).on("click", ".udatelibbook", function () {
 
         $("#updateModal").modal("hide");
         $("#bookModal").modal("show");
 
     });
-    $(document).on("click", ".delBookBtn", function() {
+    $(document).on("click", ".delBookBtn", function () {
 
         var bookid = $(this).attr("data-bookid");
         $.ajax({
             url: "/api/books/" + bookid,
             type: "DELETE"
-        }).then(function(data) {
+        }).then(function (data) {
             if (data !== null) {
                 console.log("Thank you, the book was deleted");
                 $("#updateBooks").empty();
                 $("#updateModal").modal("hide");
             }
         })
-
-
-
     });
 
 
-    $(document).on("click", ".libBookBtn", function() {
+
+    $(document).on("click", ".libBookBtn", function () {
         console.log($(this).attr("data-bookid"));
         var Bbid = $(this).attr("data-bookid");
         var uId = localStorage.getItem("userId");
@@ -400,14 +415,20 @@ $(document).ready(function() {
                 url: "/api/books",
                 data: bookdata
             })
-            .then(function(res) {
+            .then(function (res) {
                 console.log("You have borrowed this book");
                 $("#libBooks").empty();
                 $("#showBookModal").modal("hide");
             });
-
     });
-    $(document).on("click", ".userReturnBtn", function() {
+
+
+
+
+
+
+
+    $(document).on("click", ".userReturnBtn", function () {
         var Bbid = $(this).attr("data-bookid");
         var bookdata = {
             id: Bbid,
@@ -418,7 +439,7 @@ $(document).ready(function() {
                 url: "/api/books",
                 data: bookdata
             })
-            .then(function(res) {
+            .then(function (res) {
                 console.log("You have returned this book");
                 $("#userBooks").empty();
                 $("#returnBookModal").modal("hide");
@@ -431,37 +452,6 @@ $(document).ready(function() {
 
     }
     showLibrary()
-
-    //     lat = position.coords.latitude,
-    //     lng = position.coords.longitude
-    // console.log("my location", lat, lng);
-
-    // var map = new google.maps.Map(document.getElementById('map'), {
-    //     zoom: 13,
-    //     center: new google.maps.LatLng(lat, lng),
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-    // })
-    // var marker = new google.maps.Marker({
-    //     position: markerToMake,
-    //     map: map,
-    //     title: idOfLibrary
-
-    // });
-
-    // google.maps.event.addDomListener(marker, 'click', function () {
-    //     // window.location.href = marker.url;
-    //     console.log(this.title);
-    //     libraryId = this.title
-    //     console.log("library ID outside for loop", libraryId);
-    //     libarr = [];
-    //     libarr.push(libraryId);
-    //     console.log("checking if here ", libraryId);
-    //     localStorage.setItem("libraryId", libraryId);
-
-    //     loadPage()
-
-    // });
-
 
 
 

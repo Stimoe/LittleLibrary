@@ -16,6 +16,7 @@ $(document).ready(function() {
                 console.log(data)
                 localStorage.setItem('userName', data.name);
                 localStorage.setItem('userId', data.id)
+                localStorage.setItem("libraryId",1)
                 window.location.href = '/search'
                     //   res.json(loginUser);
                     //How do we redirect to user landing page?
