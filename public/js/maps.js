@@ -153,6 +153,13 @@ $(document).ready(function() {
             console.log("created new books");
             addReview(data.id)
         });
+        var userLib = {
+            userId: localStorage.getItem("userId"),
+            libraryId: localStorage.getItem("libraryId")
+        }
+        $.post("/api/userLibraries", userLib).then(function(data) {
+            console.log("created new userLibrary");
+        });
     });
 
     function addReview(bookID) {
@@ -385,6 +392,15 @@ $(document).ready(function() {
                 $("#libBooks").empty();
                 $("#showBookModal").modal("hide");
             });
+
+
+        var userLib = {
+            userId: localStorage.getItem("userId"),
+            libraryId: localStorage.getItem("libraryId")
+        }
+        $.post("/api/userLibraries", userLib).then(function(data) {
+            console.log("created new userLibrary");
+        });
 
     });
     $(document).on("click", ".userReturnBtn", function() {
