@@ -189,20 +189,20 @@ $(document).ready(function() {
                 console.log("the data this time ", data);
 
                 var title = $("<h3>");
-                title.text(data.title);
+                title.text("Title: " + data.title);
                 var author = $("<h3>");
-                author.text(data.author);
+                author.text("Author: " + data.author);
                 var genre = $("<h3>");
-                genre.text(data.genre);
+                genre.text("Genre: " + data.genre);
                 var libraryId = $("<h3>");
                 libraryId.text(data.libraryId);
                 //    var image=$("<img>");
                 //    image.attr("src",data.image);
                 $.get("/api/bookReviews/" + id).then(function(data) {
                     var body = $("<h3>");
-                    body.text(data.body);
+                    body.text("Review: " + data.body);
                     var rating = $("<h3>");
-                    rating.text(data.rating);
+                    rating.text("Rating: " + data.rating);
 
 
                     $("#clickedBook").empty();
@@ -231,7 +231,7 @@ $(document).ready(function() {
                 $("#libBooks").empty();
                 for (let i = 0; i < data.length; i++) {
                     var book = $("<h3>");
-                    book.text(data[i].title);
+                    book.text("Title: " + data[i].title);
                     book.addClass("libBook");
                     book.attr("data-id", data[i].id);
                     var btn = $("<button>");
@@ -254,16 +254,16 @@ $(document).ready(function() {
         console.log("library id in showlibrary ", id);
         $.get("/api/libraries/" + id, function(data) {
             dataTest = data
-            console.log("library info ", data);
             idLibraryNew = data
             var location = $("<h2>");
             var img = $("<img>");
-            console.log("new", data.location, data.image)
-            location.text(data.location);
+            var des = $("<p>");
+            location.text("Location: " + data.location);
             img.attr("src", data.image)
             img.addClass("libImage");
+            des.text("Description: " + data.description);
             $("#libraryInfo").empty();
-            $("#libraryInfo").append(location, img);
+            $("#libraryInfo").append(location, img, des);
         })
     }
     // function loadLibraries(data){
