@@ -490,5 +490,13 @@ $(document).ready(function() {
       });
     }
   }
-  addAll();
+  function DBcheck() {
+    $.get("/api/libraries").then(function(data) {
+        if (data.length === 0) {
+            addAll();
+        }
+    })
+}
+
+DBcheck();
 });

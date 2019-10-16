@@ -11,12 +11,12 @@
 </head>
 
 <body>
-  <!-- Navbar  -->
-  <nav id="navbar" class="navbar sticky-top navbar-expand-lg navbar-light">
-      
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <!-- <li class="nav-item">
+    <!-- Navbar  -->
+    <nav id="navbar" class="navbar sticky-top navbar-expand-lg navbar-light bg-success">
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item">
             <a class="nav-link" href="">Login</a>
           </li>
           <li class="nav-item">
@@ -28,89 +28,88 @@
           <li class="nav-item">
             <a class="nav-link" href="">Libraries</a>
           </li> -->
-        </ul>
-      </div>
+            </ul>
+        </div>
     </nav>
     <!-- Main Body  -->
-    
+
     <div class="container">
-      <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <img src="./images/littlefreelibraryorg-logo.jpg" width="500" height="100" class="d-inline-block align-top" href="https://www.littlefreelibrary.org">
-          <hr class="my-4">
-      </div>
-      <div class="row"> 
-        <div class="col-6">
-          <div class="card">
-            <h3>The Little Free Library "Little Helper"</h3>
-      <!-- <p class="lead">This app will bring you closer to your local micro-neighborhood while guiding you to your next read.  This app utilizes the wonderful community that the Little Free Library has galvanized and takes it a step further by allowing you access to a list of books in your local 'Library,' as well as opening discussion and reviews of books tied to your local library specifically.  </p> -->  
-          </div>  
+            <hr class="my-4">
         </div>
-    
-          <!-- User Login --}} -->
-        <div class="col-6">
-         <div class="card">
-          <div class="form-group">
-            <input type="text" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="login-password" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-info" id="login">Log In</button>
-        </form>
-          <div>
-          <div id="create">Need an Account?</div>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Create Account</button>
-      </div>
-     </div>
-    </div>
-    </div>
-      
-    <!-- Modal for Create Profile form  -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="create-user-modal">Create Account</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <h3>The Little Free Library "Little Helper"</h3>
+                    <!-- <p class="lead">This app will bring you closer to your local micro-neighborhood while guiding you to your next read.  This app utilizes the wonderful community that the Little Free Library has galvanized and takes it a step further by allowing you access to a list of books in your local 'Library,' as well as opening discussion and reviews of books tied to your local library specifically.  </p> -->
+                </div>
+            </div>
+
+            <!-- User Login --}} -->
+            <div class="col-6">
+                <div class="card">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="login-password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-info" id="login">Log In</button>
+                    </form>
+                    <div>
+                        <div id="create">Need an Account?</div>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Create Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Create Profile form  -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="create-user-modal">Create Account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            <form class="create-form">
-              <div class="form-group">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="text" class="form-control" id="email">
-              </div>
-              <div class="form-group">
-                <label for="password" class="col-form-label">Password:</label>
-                <input type="text" class="form-control" id="password">
-              </div>
-              <div class="name">
-                <label for="message-text" class="col-form-label">Name:</label>
-                <input type="text" class="form-control" id="name">
-              </div>
-              <div class="form-group">
-                <label for="zip" class="col-form-label">Zip Code:</label>
-                <input type="text" class="form-control" id="zipcode">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" id="create-user">Create Profile</button>
-          </div>
+                    </div>
+                    <div class="modal-body">
+                        <form class="create-form">
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email:</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-form-label">Password:</label>
+                                <input type="password" class="form-control" id="password">
+                            </div>
+                            <div class="name">
+                                <label for="message-text" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip" class="col-form-label">Zip Code:</label>
+                                <input type="text" class="form-control" id="zipcode">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="create-user">Create Profile</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="./js/data.js" type="text/javascript"></script>
     <script src="./js/user.js" type="text/javascript"></script>
-    
 
-  </body>
+
+</body>
 
 </html>
-
