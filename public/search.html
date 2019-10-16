@@ -13,6 +13,7 @@
 <body>
   <!-- Navbar  -->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-success">
+    <h3>Welcome <span id="userName"></span></h3>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">Little Free Library Helper</span>
@@ -39,7 +40,7 @@
   <div class="container-fluid">
 
     <div class="row">
-      <div class="card-header bookSearch adv"> 
+      <div class="card-header bookSearch adv">
         <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button id="searchTitle" class="searchBtn glyphicon glyphicon-search"> Search by Title</button>
         <button id="searchAuthor" class="searchBtn glyphicon glyphicon-search"> Search by Author</button>
@@ -72,14 +73,8 @@
     <!-- the results -->
 
 
-
-
-
-
-
-
-    <div class="modal fade" id="clickedBookInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
+   <div class="modal fade" id="clickedBookInfo" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -98,17 +93,13 @@
           </div>
         </div>
       </div>
-    </div>
-
-
-
-
-
+  </div>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzjpYpTtvMYchl51VMmy-NaZNhLTcaYic"></script>
-    <script src="./js/data.js"></script>
+    <!-- <script src="./js/data.js"></script> -->
+
     <script src="./js/library.js"></script>
     <script src="./js/maps.js"></script>
 

@@ -2,13 +2,15 @@
     box-sizing: border-box;
 } */
 
-body{
+body {
     background-color: #E9EEE7;
 }
 
-    #div-for-libraryMap{
-        display: none;
-    }
+#div-for-libraryMap {
+    display: none;
+}
+
+
 /* .container{
 }
     display: flex;
@@ -24,7 +26,7 @@ body{
     padding: 1rem;
     margin: 5rem;
     text-align: center;
-    color:#750627; 
+    color: #750627;
 }
 #map {
     position: fixed !important;
@@ -46,6 +48,7 @@ body{
     border: 2px solid rgb(145, 219, 33);
 }
 
+
 /* Style the search field */
 
 form.example input[type=text] {
@@ -55,10 +58,19 @@ form.example input[type=text] {
     float: left;
     width: 50%;
     background: #f1f1f1;
-} 
+}
 
 form.example button:hover {
     background: #0b7dda;
+}
+
+.libImage {
+    width: 250px;
+    height: 250px;
+}
+
+.libBook {
+    cursor: pointer;
 }
 
 
@@ -68,14 +80,25 @@ form.example::after {
     content: "";
     clear: both;
     display: table;
-} 
+}
+
+.profile {
+    text-align-last: center;
+}
+
+#profile {
+    margin-top: 3%;
+}
+
+
 /* 
 
 
 
 
-
 /* for the book search */
+
+
 /* 
 .bookSearch 
     background-color: rgba(48, 48, 61, 0.705);
