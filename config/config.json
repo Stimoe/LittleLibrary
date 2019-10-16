@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "Amjad.password",
+        "password": "password",
         "database": "littleLibrary_db",
         "host": "127.0.0.1",
         "port": 3306,
