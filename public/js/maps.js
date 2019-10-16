@@ -20,41 +20,57 @@ $(document).ready(function() {
 
     })
 
+
+    var map;
+var markerArray=[]
+
+
+
+
+
     function getLocation(data) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                // console.log("inside function",libraries.length);
-                // console.log("inside function",libraries);
+            navigator.geolocation.getCurrentPosition(function (position) {
+
                 lat = position.coords.latitude,
                     lng = position.coords.longitude
                 console.log("my location", lat, lng);
+                localStorage.setItem("userLat", lat);
+                localStorage.setItem("userLong", lng);
 
-                var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 13,
-                        center: new google.maps.LatLng(lat, lng),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    })
-                    // console.log("inside locations function",libraries.length)
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12,
+                    center: new google.maps.LatLng(lat, lng),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                })
+
+                // console.log("inside locations function",libraries.length)
+                console.log("the data", data);
 
                 for (let j = 0; j < data.length; j++) {
+
                     lat2 = data[j].lattitude
                     long2 = data[j].longitude
                     idOfLibrary = JSON.stringify(data[j].id)
-                        // location=data[i].location
+                    // location=data[i].location
+
                     markerToMake = {
                         lat: lat2,
                         lng: long2
                     }
-                    console.log(idOfLibrary);
+                    
+                    console.log("id", idOfLibrary);
+                    console.log("new marker to make ", markerToMake);
 
-                    var marker = new google.maps.Marker({
+                    marker = new google.maps.Marker({
                         position: markerToMake,
                         map: map,
                         title: idOfLibrary
 
-                    });
+                    })
+                    markerArray.push(marker);
 
-                    google.maps.event.addDomListener(marker, 'click', function() {
+                    google.maps.event.addDomListener(marker, 'click', function () {
                         // window.location.href = marker.url;
                         console.log(this.title);
                         libraryId = this.title
@@ -66,15 +82,25 @@ $(document).ready(function() {
 
                         loadPage()
 
-                    });
-                };
+
+                    })
+                }
             })
         }
     }
 
-    //library page
-    $(document).on("click", "#searchTitle", function() {
 
+
+    //library page
+    $(document).on("click", "#searchTitle", function () {
+        $(".results").empty()
+        clearOverlays()
+        function clearOverlays() {
+            for (var i = 0; i < markerArray.length; i++ ) {
+              markerArray[i].setMap(null);
+            }
+            markerArray.length = 0;
+          }
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by title
@@ -90,13 +116,20 @@ $(document).ready(function() {
                         result.text("Title: " + data[j].title + "     Author: " + data[j].author);
                         $(".results").append(result);
                     }
-                    getLocation(libraryLocations)
+                    makeSearchMarkers(libraryLocations)
                 }
             });
         }
     });
-    $(document).on("click", "#searchGenre", function() {
-
+    $(document).on("click", "#searchGenre", function () {
+        $(".results").empty()
+        clearOverlays()
+        function clearOverlays() {
+            for (var i = 0; i < markerArray.length; i++ ) {
+              markerArray[i].setMap(null);
+            }
+            markerArray.length = 0;
+          }
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by genre
@@ -110,13 +143,20 @@ $(document).ready(function() {
                         result.text("Title: " + data[k].title + "     Author: " + data[k].author);
                         $(".results").append(result);
                     }
-                    getLocation(libraryLocations)
+                    makeSearchMarkers(libraryLocations)
                 }
             });
         }
     })
-    $(document).on("click", "#searchAuthor", function() {
-
+    $(document).on("click", "#searchAuthor", function () {
+        $(".results").empty()
+        clearOverlays()
+        function clearOverlays() {
+            for (var i = 0; i < markerArray.length; i++ ) {
+              markerArray[i].setMap(null);
+            }
+            markerArray.length = 0;
+          }
         var input = $("#searchBox").val().trim();
         if (input !== "") {
             //search by genre
@@ -130,12 +170,71 @@ $(document).ready(function() {
                         result.text("Title: " + data[i].title + "     Author: " + data[i].author);
                         $(".results").append(result);
                     }
-                    getLocation(libraryLocations)
+                    makeSearchMarkers(libraryLocations)
                 }
             });
         }
     })
-    $(document).on("click", "#addBook", function() {
+
+    function makeSearchMarkers(data) {
+        libraryLocations = [];
+        
+        clearOverlays()
+        function clearOverlays() {
+            for (var i = 0; i < markerArray.length; i++ ) {
+              markerArray[i].setMap(null);
+            }
+            markerArray.length = 0;
+          }
+        console.log("The newest data ", data);
+        for (let m = 0; m < data.length; m++) {
+
+            $.get("/api/libraries/" + data[m], function (response) {
+                libraryLocations.push(response)
+                console.log("the major data ", response);
+                
+                    
+                    
+                    lat2 = response.lattitude
+                    long2 = response.longitude
+                    idOfLibrary = JSON.stringify(response.id)
+                    // location=data[i].location
+                    markerToMake = {
+                        lat: lat2,
+                        lng: long2
+                    }
+                    console.log("id", idOfLibrary);
+                    console.log("new marker to make ", markerToMake);
+
+                    var marker = new google.maps.Marker({
+                        position: markerToMake,
+                        map: map,
+                        title: idOfLibrary
+
+                    })
+                    markerArray.push(marker);
+                    google.maps.event.addDomListener(marker, 'click', function () {
+                        // window.location.href = marker.url;
+                        console.log(this.title);
+                        libraryId = this.title
+                        console.log("library ID outside for loop", libraryId);
+                        libarr = [];
+                        libarr.push(libraryId);
+                        console.log("checking if here ", libraryId);
+                        localStorage.setItem("libraryId", libraryId);
+
+                        loadPage()
+                    })
+
+                })
+           
+
+
+        }
+    }
+
+
+    $(document).on("click", "#addBook", function () {
 
         var uId = localStorage.getItem("userId");
         var lId = localStorage.getItem("libraryId");
@@ -184,7 +283,7 @@ $(document).ready(function() {
     }
 
 
-    $(document).on("click", ".booksResults", function() {
+    $(document).on("click", ".booksResults", function () {
         console.log("clicked")
         var id = $(this).attr("data-bookid")
 
