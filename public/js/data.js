@@ -259,10 +259,10 @@ $(document).ready(function() {
       userId: 2
     },
     {
-      title: "Something Under my bed is drooling",
+      title: "Something Under My Bed is Drooling",
       author: "Bill Watterson",
       genre: "Comics",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/617+L5BwiiL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 4,
       userId: 3
@@ -270,8 +270,8 @@ $(document).ready(function() {
     {
       title: "Ghost of Gondwana",
       author: "George Gibbs",
-      genre: "Nature",
-      image: "",
+      genre: "Reference",
+      image: "https://m.media-amazon.com/images/I/41gzFr3I8NL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 3,
       userId: 4
@@ -490,6 +490,7 @@ $(document).ready(function() {
       });
     }
   }
+
   function DBcheck() {
     $.get("/api/libraries").then(function(data) {
         if (data.length === 0) {
@@ -499,4 +500,5 @@ $(document).ready(function() {
 }
 
 DBcheck();
+addAll();
 });
