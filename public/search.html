@@ -2,114 +2,140 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Little Free Library Helper Search</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Latest compiled and minified CSS & JS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="./css/style.css" />
+    <title>Little Free Library Community App Search Page</title>
 </head>
 
 <body>
-    <!-- Navbar  -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-success">
-        <h3>Welcome <span id="userName"></span></h3>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">Little Free Library Helper</span>
+  <!-- Navbar  -->
+  <nav id="navbar" class="navbar sticky-top navbar-expand-lg navbar-light">
+    <img class="nav-img" src="./images/151-1516603_text-clipart-library-book-little-free-library.jpg" style="height: 4rem; width:auto;">
+    <!-- Welcome User -->
+    <h3>Welcome, <span id="userName"></span></h3>
+    <div class="collapse navbar-collapse" id="navbarNav"></div> 
+    <h4 class="navbar">The Little Free Library Community App</h4>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-end mask rgba-red-slight"" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/index.html">Login <span class="sr-only"></span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="#"  data-toggle="modal" data-target="#aboutModal">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/search.html">Search</a>
+          <a class="nav-link" href="http://localhost:8080/search.html">Search</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/profile.html">Profile</a>
+          <a class="nav-link" href="http://localhost:8080/profile.html">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="http://localhost:8080/library.html">Libraries</a>
+          <a class="nav-link" href="http://localhost:8080/library.html">Libraries</a>
         </li>
       </ul>
     </div>
   </nav>
-
-
-   
-
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col sm-6" id="searchArea">
-                <div class="row">
-                    <div class="card-header bookSearch adv">
-                        <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button id="searchTitle" class="searchBtn glyphicon glyphicon-search"> Search by Title</button>
-                        <button id="searchAuthor" class="searchBtn glyphicon glyphicon-search"> Search by Author</button>
-                        <button id="searchGenre" class="searchBtn glyphicon glyphicon-search"> Search by Genre</button>
-                        <select name="Genre">
-                          <option value="Fantasy">Fantasy</option>
-                          <option value="Children's Literature">Children's Literature</option>
-                          <option value="Science fiction">Science fiction</option>
-                          <option value="Western">Western</option>
-                          <option value="Classic">Classic</option>
-                          <option value="Romance">Romance</option>
-                          <option value="Mystery">Mystery</option>
-                          <option value="Biography">Biography</option>
-                          <option value="Self-Help">Self-Help</option>
-                          <option value="Reference">Reference</option>
-                
-                        </select>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class=" results">
-
-                    </div>
-                </div>
-            </div>
-            <div class="col sm-6" id="myMap">
-                <div id="div-for-map">
-                    <div id=content>
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
+  <!-- Search Bar and Drop down menu -->
+  <div class="container">
+    <div class="jumbotron container-fluid bg-white">  
+      <!-- Littlefreelibrary.org logo                         -->
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <img style="width: 30rem;" src="./images/littlefreelibraryorg-logo.jpg" href="https://www.littlefreelibrary.org">
+          <hr class="my-4">
         </div>
-
-
-
-
-
-        ​ ​
-
-
-        <!-- the results -->
-
-
-        <div class="modal fade" id="clickedBookInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Book Info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="clickedBook">
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+      </div>
+      <!-- Search input -->
+      <div class="row justify-content-center" id="search-card">
+        <div class="col-sm-6" id="searchArea">
+          
+            <div class="card-header bookSearch adv justify-content-center bg-white">
+              <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+              <button id="searchTitle" class="searchBtn btn-success glyphicon glyphicon-search"> Search by Title</button>
+              <button id="searchAuthor" class="searchBtn btn-success glyphicon glyphicon-search"> Search by Author</button>
+              <button id="searchGenre" class="searchBtn btn-success glyphicon glyphicon-search"> Search by Genre</button>
+              <select name="Genre">
+                <option value="Fantasy">Fantasy</option>
+                <option value="Children's Literature">Children's Literature</option>
+                <option value="Science fiction">Science fiction</option>
+                <option value="Western">Western</option>
+                <option value="Classic">Classic</option>
+                <option value="Romance">Romance</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Biography">Biography</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Reference">Reference</option>
+              </select>
             </div>
-        </div>
+          </div>
+              <br>
+              <br>
+              <div class="row">
+                  <div class=" results">
+
+                  </div>
+              </div>
+          </div>
+          <div class="col sm-6" id="myMap">
+              <div id="div-for-map">
+                  <div id="content">
+                      <div id="map"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Footer  -->
+      <footer class="footer mt-auto py-3 fixed-bottom" id="footer">
+          <div class="container">
+            <p class="m-0 text-center">Copyright &copy; 2019 Little Free Library Community App</p>
+          </div>
+      
+        </footer>  
+    <!-- Book Info Modal -->
+      <div class="modal fade" id="clickedBookInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Book Info</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                  </div>
+                  <div class="modal-body">
+                      <div id="clickedBook">
+
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+          <!-- About Link Modal -->
+          <div id="aboutModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <div id="about-modal" class="modal-content">
+                      <div class="modal-header">
+                          <h5>About Our App:</h5> 
+                      </div>
+                      <div id="modal-body">
+                              <h5><a href="http//:www.littlefreelibrary.org">Littlefreelibrary.org</a>is a nonprofit organization that inspires a love of reading, builds community, and sparks creativity by fostering neighborhood book exchanges around the world.  This app utilizes the community the littlefreelibrary.org has captured and provides a local forum for each neighborhood to discuss, review, and explore new books.
+                              <h5>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  </div> 
 
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
