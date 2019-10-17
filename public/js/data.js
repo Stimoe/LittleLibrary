@@ -145,7 +145,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/91a+a2YZEXL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 6,
-      userId: 10
+      userId: 9
     },
 
     {
@@ -190,8 +190,8 @@ $(document).ready(function() {
       image:
         "https://m.media-amazon.com/images/I/41gwu0NcCrL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
-      libraryId: 5,
-      userId: 9
+      libraryId: 2,
+      userId: 4
     },
 
     {
@@ -202,7 +202,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/91fl6CaDxfL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 9,
-      userId: 3
+      userId: 10
     },
 
     {
@@ -235,7 +235,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/8178rXr8qiL._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 6,
-      userId: 7
+      userId: 6
     },
 
     {
@@ -246,7 +246,7 @@ $(document).ready(function() {
         "https://m.media-amazon.com/images/I/81FKdzAcx+L._AC_UY327_FMwebp_QL65_.jpg",
       availability: true,
       libraryId: 5,
-      userId: 10
+      userId: 4
     },
 
     {
@@ -256,7 +256,7 @@ $(document).ready(function() {
       image: "https://images-na.ssl-images-amazon.com/images/I/61Ng-W9EhBL.jpg",
       availability: true,
       libraryId: 10,
-      userId: 5
+      userId: 2
     },
     {
       title: "Something Under My Bed is Drooling",
