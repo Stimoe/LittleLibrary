@@ -58,9 +58,9 @@ body {
 
 #map {
     position: fixed !important;
-    height: 60% !important;
+    height: 50% !important;
     width: 30% !important;
-    margin-bottom: 5% !important;
+    margin-bottom: 15% !important;
     /* right: 3% !important;
     top: 15% !important; */
 }
