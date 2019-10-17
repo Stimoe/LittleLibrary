@@ -500,5 +500,5 @@ $(document).ready(function() {
 }
 
 DBcheck();
-addAll();
+
 });
