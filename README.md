@@ -21,7 +21,7 @@ This is a user driven application that helps build communities through literacy!
 ---
 
 ## Contributors
-    -Amjad Ayoub
+    -Amjed Ayoub
     -Thomas Stimac
     -Dan L. Grigg
 ---
