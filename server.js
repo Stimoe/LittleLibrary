@@ -16,7 +16,7 @@ var PORT = process.env.PORT || 8080;
 var db = require("./models");
 var session = require("express-session");
 
-console.log(process.env.googleMapsApiKey)
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
