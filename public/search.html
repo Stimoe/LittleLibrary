@@ -129,8 +129,8 @@
 
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzjpYpTtvMYchl51VMmy-NaZNhLTcaYic"></script>
-        <!-- <script src="./js/data.js"></script> -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=" + process.env.googleMapsApiKey></script>
+        <!-- <script src="./js/data.js"></script> --> 
 
         <script src="./js/library.js"></script>
         <script src="./js/maps.js"></script>
@@ -138,3 +138,5 @@
 </body>
 
 </html>
+
+key="+process.env.Omdb_APIKEY+"";
