@@ -13,7 +13,7 @@ $(document).ready(function() {
         $.post("/login", loginUser)
             .then(function(data) {
                 // console.log("login user", data);
-                console.log(data)
+                // console.log(data)
                 localStorage.setItem('userName', data.name);
                 localStorage.setItem('userId', data.id)
                 localStorage.setItem("libraryId",1)
@@ -34,7 +34,7 @@ $(document).ready(function() {
             zipcode: $("#zipcode").val().trim(),
         };
 
-        $.post("http://localhost:8080/api/users", newUser)
+        $.post("/api/users", newUser)
             .then(function() {
                 $("#login-email").val(newUser.email);
                 $("#login-password").val(newUser.password);
