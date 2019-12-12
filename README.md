@@ -1,5 +1,5 @@
 # The Little Free Library Community App
-
+The app can be found at, https://little-library-app.herokuapp.com
 
 ## Description
 This is a user driven application that helps build communities through literacy! Users of this app will be accessing physical books from a local "Little Free Library" [littlefreelibrary.org]. Users will first create an account and search for their local 'Little Library' and then access the database of books to add, borrow, or update any missing or untracked books.  Users also have the ability to write reviews to post to a discussion board that is specific to that title at that individual library, thus enabling a dialogue between neighbors which can foster and deepen connections and understanding in that community.  
@@ -22,7 +22,7 @@ This is a user driven application that helps build communities through literacy!
 
 ## Contributors
     -Amjad Ayoub
-    -Thomas Stimac
+    -Thomas Stimac Github at, https://github.com/Stimoe, https://github.com/Stimoe/LittleLibrary
     -Dan L. Grigg
 ---
 
