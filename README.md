@@ -22,7 +22,7 @@ This is a user driven application that helps build communities through literacy!
 
 ## Contributors
     -Amjad Ayoub
-    -Thomas Stimac Github at, https://github.com/Stimoe, https://github.com/Stimoe/LittleLibrary
+    -Thomas Stimac Github at, https://github.com/Stimoe/LittleLibrary, profile at https://stimoe.github.io/Thomas-Portfolio-Page/
     -Dan L. Grigg
 ---
 
